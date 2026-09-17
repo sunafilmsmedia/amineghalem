@@ -12,9 +12,9 @@ Aucun build. Hébergement statique : Vercel ou Netlify.
 
 ## À faire avant mise en ligne
 
-**Placeholders texte**
-- Téléphone / courriel : `514 000-0000` et `info@example.com` (dans `index.html` **et** dans le JSON-LD du `<head>`).
-- `favicon` + `og:image` (1200×630).
+**Placeholders texte** ✅ coordonnées en place
+- Agence : RE/MAX Alliance St-Laurent. Cell 514 294-2872 · Bureau 514 382-5000 · amine.ghalem@remax-quebec.com.
+- Reste : `favicon`. (og:image = `amine-banner.jpg`, déjà en place.)
 
 **Vidéo de fond du hero → Wistia** ✅ en place
 - IDs branchés : `twot4oqwkq` puis `qm71omu8oz` (dans `var HERO_WISTIA` en bas de `index.html`).

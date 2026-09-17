@@ -1,7 +1,7 @@
 # El-Amine Ghalem — Courtier immobilier
 
 El-Amine Ghalem est courtier immobilier résidentiel depuis 2010.
-Il exerce sous la bannière RE/MAX.
+Il exerce sous la bannière RE/MAX Alliance St-Laurent.
 
 ## Territoires desservis
 Laval, Boucherville et les Laurentides (Rive-Nord de Montréal).
@@ -12,5 +12,8 @@ Laval, Boucherville et les Laurentides (Rive-Nord de Montréal).
 - Évaluation gratuite de la valeur marchande
 
 ## Contact
+Cellulaire : 514 294-2872
+Bureau : 514 382-5000
+Courriel : amine.ghalem@remax-quebec.com
 Évaluation gratuite : https://elamineghalem.com/#evaluation
 Site : https://elamineghalem.com/

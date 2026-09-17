@@ -44,8 +44,8 @@
   "description": "Courtier immobilier résidentiel depuis 2010, desservant Laval, Boucherville et les Laurentides.",
   "url": "https://elamineghalem.com/",
   "image": "https://elamineghalem.com/amine-banner.jpg",
-  "telephone": "+1-514-000-0000",
-  "email": "info@example.com",
+  "telephone": "+1-514-294-2872",
+  "email": "amine.ghalem@remax-quebec.com",
   "priceRange": "$$",
   "areaServed": [
     { "@type": "City", "name": "Laval" },
@@ -54,7 +54,7 @@
   ],
   "memberOf": {
     "@type": "Organization",
-    "name": "RE/MAX Alliance"
+    "name": "RE/MAX Alliance St-Laurent"
   },
   "knowsLanguage": ["fr", "en"],
   "foundingDate": "2010"
@@ -97,15 +97,13 @@
     }
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
   body{
     margin:0;background:var(--bg);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   }
   img{max-width:100%;display:block}
-  /* Barre tricolore signature RE/MAX */
-  .remax-bar{height:5px;background:linear-gradient(90deg,var(--accent) 0 33.34%,#ffffff 33.34% 66.67%,var(--blue) 66.67% 100%)}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
   h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0}
@@ -126,19 +124,22 @@
   .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
   /* NAV */
-  header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
-    backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;
+    transition:background .25s ease, box-shadow .25s ease}
+  header.nav.scrolled{background:var(--brand);
+    backdrop-filter:saturate(160%) blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.18)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
-  .brand{font-weight:800;letter-spacing:-.02em;font-size:1.05rem}
-  .brand span{color:var(--accent)}
+  .brand{display:flex;align-items:center}
+  .brand img{height:26px;width:auto;display:block;filter:brightness(0) invert(1)}
   .nav-links{display:flex;align-items:center;gap:1.6rem}
-  .nav-links a{color:var(--ink-soft);font-weight:600;font-size:.95rem}
-  .nav-links a:hover{color:var(--ink)}
+  .nav-links a{color:rgba(255,255,255,.9);font-weight:600;font-size:.95rem}
+  .nav-links a:hover{color:#fff}
   .nav-cta{display:inline-flex}
   @media(max-width:860px){.nav-links a:not(.nav-cta){display:none}}
+  @media(max-width:560px){.brand img{height:20px}.nav-cta{padding:.6rem 1rem;font-size:.88rem}}
 
   /* HERO */
-  .hero{padding:clamp(56px,9vw,110px) 0 clamp(48px,7vw,84px);position:relative;overflow:hidden}
+  .hero{padding:clamp(100px,13vw,150px) 0 clamp(48px,7vw,84px);position:relative;overflow:hidden}
   /* Vidéo de fond */
   .hero-bg{position:absolute;inset:0;z-index:-3;overflow:hidden;background:#002a6b}
   .hero-bg .wistia_embed{position:absolute;inset:0;width:100%;height:100%;
@@ -150,6 +151,9 @@
       color-mix(in srgb,var(--bg) 86%,transparent) 0%,
       color-mix(in srgb,var(--bg) 68%,transparent) 45%,
       color-mix(in srgb,var(--bg) 40%,transparent) 100%);}
+  /* Dégradé sombre en haut : garde le logo/menu blancs lisibles sur la vidéo */
+  .hero-topfade{position:absolute;top:0;left:0;right:0;height:170px;z-index:-1;
+    background:linear-gradient(to bottom, rgba(4,10,25,.6), rgba(4,10,25,0))}
   .hero:before{content:"";position:absolute;inset:0;z-index:-1;
     background:radial-gradient(1200px 500px at 78% -10%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 60%);}
   @media (prefers-reduced-motion: reduce){.hero-bg .wistia_embed{display:none}}
@@ -235,13 +239,10 @@
 </head>
 <body>
 
-<!-- Barre tricolore RE/MAX -->
-<div class="remax-bar" aria-hidden="true"></div>
-
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="#top" class="brand">El-Amine <span>Ghalem</span></a>
+    <a href="#top" class="brand" aria-label="Accueil — El-Amine Ghalem, RE/MAX Alliance St-Laurent"><img src="remax-alliance.svg" alt="RE/MAX Alliance St-Laurent"></a>
     <nav class="nav-links">
       <a href="#apropos">À propos</a>
       <a href="#evaluation">Évaluation</a>
@@ -258,6 +259,7 @@
          Les lecteurs sont créés par le <script> en bas — colle tes 2 hashed IDs dans HERO_WISTIA. -->
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-topfade" aria-hidden="true"></div>
     <div class="wrap">
       <p class="eyebrow">Courtier immobilier · depuis 2010</p>
       <h1>Vendez au juste prix,<br>sans mauvaise surprise.</h1>
@@ -370,13 +372,17 @@
       <h2>Parlons de votre projet.</h2>
       <p class="lead" style="margin:.8rem auto 0;max-width:46ch">Une question rapide ? Joignez El-Amine directement.</p>
       <div class="contact-methods">
-        <a class="cta-tile" href="tel:+15140000000">
-          <span>📞</span>
-          <span><small>Téléphone</small>514 000-0000</span>
+        <a class="cta-tile" href="tel:+15142942872">
+          <span>📱</span>
+          <span><small>Cellulaire</small>514 294-2872</span>
         </a>
-        <a class="cta-tile" href="mailto:info@example.com">
+        <a class="cta-tile" href="tel:+15143825000">
+          <span>📞</span>
+          <span><small>Bureau</small>514 382-5000</span>
+        </a>
+        <a class="cta-tile" href="mailto:amine.ghalem@remax-quebec.com">
           <span>✉️</span>
-          <span><small>Courriel</small>info@example.com</span>
+          <span><small>Courriel</small>amine.ghalem@remax-quebec.com</span>
         </a>
       </div>
     </div>
@@ -389,19 +395,19 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <span class="remax-logo"><img src="remax-alliance.svg" width="200" alt="RE/MAX Alliance"></span>
+        <span class="remax-logo"><img src="remax-alliance.svg" width="200" alt="RE/MAX Alliance St-Laurent"></span>
         <b>El-Amine Ghalem</b>
-        <p>Courtier immobilier résidentiel · RE/MAX Alliance. Au service de Laval, Boucherville et des Laurentides depuis 2010.</p>
+        <p>Courtier immobilier résidentiel · RE/MAX Alliance St-Laurent. Au service de Laval, Boucherville et des Laurentides depuis 2010.</p>
       </div>
       <nav class="foot-links">
         <a href="#apropos">À propos</a>
         <a href="#evaluation">Évaluation</a>
-        <a href="tel:+15140000000">514 000-0000</a>
-        <a href="mailto:info@example.com">info@example.com</a>
+        <a href="tel:+15142942872">514 294-2872</a>
+        <a href="mailto:amine.ghalem@remax-quebec.com">amine.ghalem@remax-quebec.com</a>
       </nav>
     </div>
     <div class="foot-legal">
-      <span>© <span id="year"></span> El-Amine Ghalem — Courtier immobilier, RE/MAX Alliance. Tous droits réservés.</span>
+      <span>© <span id="year"></span> El-Amine Ghalem — Courtier immobilier, RE/MAX Alliance St-Laurent. Tous droits réservés.</span>
       <span>Site conçu pour la performance.</span>
     </div>
   </div>
@@ -410,6 +416,15 @@
 <script>
   // Année dynamique
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Nav : fond plein dès qu'on scrolle (logo blanc reste lisible)
+  (function(){
+    var nav = document.querySelector('header.nav');
+    if (!nav) return;
+    function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive:true });
+  })();
 
   // ==== VIDÉO DE FOND — Wistia, 2 clips enchaînés sans coupure ====
   // 1. Ouvre chaque vidéo dans Wistia → « Embed & Share » → « Inline Embed ».
@@ -501,7 +516,7 @@
       console.error(err);
       btn.disabled = false;
       btn.textContent = 'Recevoir mon évaluation';
-      alert("Une erreur est survenue. Réessayez ou appelez au 514 000-0000.");
+      alert("Une erreur est survenue. Réessayez ou appelez au 514 294-2872.");
     }
   });
 </script>
