@@ -19,10 +19,9 @@
 <meta property="og:title" content="El-Amine Ghalem — Courtier immobilier">
 <meta property="og:description" content="Vente, achat et évaluation gratuite de votre propriété à Laval, Boucherville et dans les Laurentides.">
 <meta property="og:url" content="https://elamineghalem.com/">
-<!-- og:image — mettre photo d'El-Amine ou visuel 1200x630 -->
-<meta property="og:image" content="https://elamineghalem.com/og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="https://elamineghalem.com/amine-banner.jpg">
+<meta property="og:image:width" content="2000">
+<meta property="og:image:height" content="1000">
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- ===================================================================
@@ -44,7 +43,7 @@
   "name": "El-Amine Ghalem",
   "description": "Courtier immobilier résidentiel depuis 2010, desservant Laval, Boucherville et les Laurentides.",
   "url": "https://elamineghalem.com/",
-  "image": "https://elamineghalem.com/og-image.jpg",
+  "image": "https://elamineghalem.com/amine-banner.jpg",
   "telephone": "+1-514-000-0000",
   "email": "info@example.com",
   "priceRange": "$$",
@@ -175,7 +174,7 @@
   .about{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
   @media(max-width:840px){.about{grid-template-columns:1fr}}
   .about-photo{
-    aspect-ratio:4/5;width:100%;object-fit:cover;object-position:center top;
+    aspect-ratio:4/5;width:100%;object-fit:cover;object-position:center;
     border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);
   }
   .about ul{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:.7rem}
@@ -288,7 +287,7 @@
   <!-- À PROPOS -->
   <section id="apropos">
     <div class="wrap about">
-      <img class="about-photo" src="amine.avif" width="320" height="400" alt="El-Amine Ghalem, courtier immobilier" loading="lazy" decoding="async">
+      <img class="about-photo" src="amine.jpg" width="461" height="564" alt="El-Amine Ghalem, courtier immobilier" loading="lazy" decoding="async">
       <div>
         <p class="eyebrow">À propos</p>
         <h2>Un courtier de terrain, pas un intermédiaire.</h2>
@@ -417,7 +416,7 @@
   // 2. Récupère le hashed ID (les 10 caractères après wistia_async_ dans le code fourni).
   // 3. Colle-les ci-dessous, dans l'ordre de lecture. C'est le SEUL endroit à modifier.
   (function(){
-    var HERO_WISTIA = ['VIDEO_ID_1', 'VIDEO_ID_2'];
+    var HERO_WISTIA = ['twot4oqwkq', 'qm71omu8oz'];
 
     var bg = document.querySelector('.hero-bg');
     // Tant que les IDs ne sont pas remplacés, on ne charge rien (fond bleu uni).

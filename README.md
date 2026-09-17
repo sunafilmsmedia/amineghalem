@@ -5,7 +5,8 @@ Aucun build. Hébergement statique : Vercel ou Netlify.
 
 ## Fichiers
 - `index.html` — le site
-- `amine.avif` — photo d'El-Amine (section À propos)
+- `amine.jpg` — portrait d'El-Amine (section À propos, 461×564)
+- `amine-banner.jpg` — bannière lifestyle (utilisée en og:image de partage, 2000×1000)
 - `remax-alliance.svg` — logo RE/MAX Alliance (footer)
 - `robots.txt`, `sitemap.xml`, `llms.txt` — SEO / IA (remplacer le domaine si ≠ elamineghalem.com)
 
@@ -15,10 +16,9 @@ Aucun build. Hébergement statique : Vercel ou Netlify.
 - Téléphone / courriel : `514 000-0000` et `info@example.com` (dans `index.html` **et** dans le JSON-LD du `<head>`).
 - `favicon` + `og:image` (1200×630).
 
-**Vidéo de fond du hero → Wistia**
-- Hébergée sur Wistia. Dans le `<script>` en bas : `var HERO_WISTIA = ['VIDEO_ID_1','VIDEO_ID_2']`.
-- Remplacer par les 2 hashed IDs (Wistia → média → Embed & Share → Inline Embed → les 10 caractères après `wistia_async_`).
-- Les 2 clips s'enchaînent en boucle, sans coupure, en muet + autoplay. Tant que les IDs ne sont pas mis, le fond reste bleu uni.
+**Vidéo de fond du hero → Wistia** ✅ en place
+- IDs branchés : `twot4oqwkq` puis `qm71omu8oz` (dans `var HERO_WISTIA` en bas de `index.html`).
+- Les 2 clips s'enchaînent en boucle, sans coupure, en muet + autoplay + cover.
 
 **Formulaire → GoHighLevel**
 - Dans le `<script>` : `const WEBHOOK_URL = ""` → coller l'URL de l'Inbound Webhook GHL.
@@ -39,4 +39,4 @@ Aucun build. Hébergement statique : Vercel ou Netlify.
 
 ## Notes perf
 - La vidéo Wistia charge le script `E-v1.js` (externe) → surveiller le PageSpeed mobile (objectif ≥ 90).
-- Photo `amine.avif` : actuellement 320×400 px. Fournir une version plus haute résolution (≈ 800 px de large, < 200 Ko) pour un rendu net sur desktop.
+- Portrait `amine.jpg` : 461 px de large. Correct, mais une version ≈ 800 px (< 200 Ko) serait plus nette sur grand écran.
