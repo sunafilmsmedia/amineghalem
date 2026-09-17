@@ -132,8 +132,20 @@
 
   /* HERO */
   .hero{padding:clamp(56px,9vw,110px) 0 clamp(48px,7vw,84px);position:relative;overflow:hidden}
+  /* Vidéo de fond */
+  .hero-bg{position:absolute;inset:0;z-index:-3;overflow:hidden;background:#0f1b2d}
+  .hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity .5s ease;will-change:opacity}
+  .hero-bg video.active{opacity:1}
+  /* Voile adaptatif : garde le texte lisible en clair comme en sombre */
+  .hero-scrim{position:absolute;inset:0;z-index:-2;
+    background:linear-gradient(90deg,
+      color-mix(in srgb,var(--bg) 86%,transparent) 0%,
+      color-mix(in srgb,var(--bg) 68%,transparent) 45%,
+      color-mix(in srgb,var(--bg) 40%,transparent) 100%);}
   .hero:before{content:"";position:absolute;inset:0;z-index:-1;
     background:radial-gradient(1200px 500px at 78% -10%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 60%);}
+  @media (prefers-reduced-motion: reduce){.hero-bg video{display:none}}
   .hero .lead{max-width:44ch;margin-top:1.1rem}
   .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
   .territoires{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:.55rem}
@@ -253,6 +265,13 @@
 
   <!-- HERO -->
   <section class="hero">
+    <!-- Vidéo de fond : 2 clips joués en boucle, l'un après l'autre, sans arrêt.
+         Remplace hero-1.mp4 / hero-2.mp4 par tes fichiers (voir la liste HERO_SOURCES dans le <script> en bas). -->
+    <div class="hero-bg" aria-hidden="true">
+      <video id="hv-a" muted playsinline autoplay preload="auto"></video>
+      <video id="hv-b" muted playsinline preload="auto"></video>
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
     <div class="wrap">
       <p class="eyebrow">Courtier immobilier · depuis 2010</p>
       <h1>Vendez au juste prix,<br>sans mauvaise surprise.</h1>
@@ -443,6 +462,47 @@
 <script>
   // Année dynamique
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ==== VIDÉO DE FOND — enchaînement sans coupure ====
+  // Liste tes clips ici (dans l'ordre). Fonctionne avec 2 clips ou plus.
+  // Formats : mets du .mp4 (H.264) pour une compatibilité maximale.
+  (function(){
+    const HERO_SOURCES = ['hero-1.mp4', 'hero-2.mp4'];
+    const a = document.getElementById('hv-a');
+    const b = document.getElementById('hv-b');
+    if (!a || !b || !HERO_SOURCES.length) return;
+
+    const els = [a, b];
+    let cur = 0;   // index de l'élément vidéo actif (0 ou 1)
+    let idx = 0;   // index du clip en cours dans HERO_SOURCES
+
+    function load(el, i){
+      const src = HERO_SOURCES[i % HERO_SOURCES.length];
+      if (el.getAttribute('src') !== src){ el.src = src; el.load(); }
+    }
+    function show(el){ els.forEach(v => v.classList.toggle('active', v === el)); }
+
+    // Prépare le 1er clip sur A (visible) et le suivant sur B (caché, prêt)
+    load(els[0], 0); show(els[0]); els[0].play().catch(()=>{});
+    load(els[1], 1);
+
+    els.forEach(v => v.addEventListener('ended', function(){
+      if (v !== els[cur]) return;          // ignore l'événement de la vidéo cachée
+      const next = (cur + 1) % 2;
+      idx = (idx + 1) % HERO_SOURCES.length;
+      show(els[next]);                     // fondu vers la vidéo déjà prête
+      els[next].currentTime = 0;
+      els[next].play().catch(()=>{});
+      cur = next;
+      load(els[(next + 1) % 2], idx + 1);  // précharge le clip d'après sur l'élément libéré
+    }));
+
+    // Sécurité iOS : relance la lecture au 1er contact si l'autoplay a été bloqué
+    document.addEventListener('touchstart', function once(){
+      els[cur].play().catch(()=>{});
+      document.removeEventListener('touchstart', once);
+    }, { passive: true });
+  })();
 
   // ==== FORMULAIRE → GoHighLevel ====
   // Coller ici l'URL du Inbound Webhook GHL (Automations → Workflow → Trigger "Inbound Webhook").
