@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>El-Amine Ghalem — Courtier immobilier | Laval, Boucherville, Laurentides</title>
 <meta name="description" content="El-Amine Ghalem, courtier immobilier depuis 2010. Vente, achat et évaluation gratuite de votre propriété à Laval, Boucherville et dans les Laurentides.">
-<meta name="theme-color" content="#0f1b2d">
+<meta name="theme-color" content="#DC1C2E">
 <link rel="canonical" href="https://elamineghalem.com/">
 
 <!-- Favicon — à remplacer par le vrai fichier -->
@@ -55,39 +55,45 @@
   ],
   "memberOf": {
     "@type": "Organization",
-    "name": "RE/MAX"
+    "name": "RE/MAX Alliance"
   },
   "knowsLanguage": ["fr", "en"],
   "foundingDate": "2010"
 }
 </script>
 
+<!-- Wistia — lecteur pour la vidéo de fond du hero -->
+<script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+
 <style>
   :root{
+    /* Charte RE/MAX : rouge + bleu + blanc */
     --bg:#ffffff;
-    --bg-soft:#f4f6f9;
+    --bg-soft:#f3f5f9;
     --bg-card:#ffffff;
-    --ink:#0f1b2d;
-    --ink-soft:#48566b;
-    --line:#e2e7ee;
-    --brand:#0f1b2d;
-    --accent:#c8a24a;
-    --accent-ink:#0f1b2d;
-    --shadow:0 1px 2px rgba(15,27,45,.04),0 12px 32px rgba(15,27,45,.08);
+    --ink:#101a2e;
+    --ink-soft:#4a5568;
+    --line:#e1e6ee;
+    --brand:#003DA5;        /* Bleu RE/MAX */
+    --blue:#003DA5;         /* Bleu RE/MAX */
+    --accent:#DC1C2E;       /* Rouge RE/MAX */
+    --accent-ink:#ffffff;   /* Texte sur le rouge */
+    --shadow:0 1px 2px rgba(16,26,46,.05),0 12px 32px rgba(16,26,46,.09);
     --radius:16px;
     --maxw:1120px;
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --bg:#0b1220;
-      --bg-soft:#0f1a2b;
-      --bg-card:#111d31;
+      --bg:#0a1120;
+      --bg-soft:#0f1a2d;
+      --bg-card:#101d33;
       --ink:#eef2f8;
       --ink-soft:#9fb0c6;
-      --line:#1e2c42;
-      --brand:#eef2f8;
-      --accent:#d8b767;
-      --accent-ink:#0b1220;
+      --line:#1e2c44;
+      --brand:#0b1220;
+      --blue:#6ea8ff;       /* Bleu RE/MAX éclairci (lisible sur fond sombre) */
+      --accent:#ff3b4a;      /* Rouge RE/MAX éclairci */
+      --accent-ink:#ffffff;
       --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px rgba(0,0,0,.5);
     }
   }
@@ -99,6 +105,8 @@
     line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   }
   img{max-width:100%;display:block}
+  /* Barre tricolore signature RE/MAX */
+  .remax-bar{height:5px;background:linear-gradient(90deg,var(--accent) 0 33.34%,#ffffff 33.34% 66.67%,var(--blue) 66.67% 100%)}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
   h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0}
@@ -114,7 +122,7 @@
     transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
   }
   .btn-primary{background:var(--accent);color:var(--accent-ink)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(200,162,74,.35)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(220,28,46,.35)}
   .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
   .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -133,10 +141,10 @@
   /* HERO */
   .hero{padding:clamp(56px,9vw,110px) 0 clamp(48px,7vw,84px);position:relative;overflow:hidden}
   /* Vidéo de fond */
-  .hero-bg{position:absolute;inset:0;z-index:-3;overflow:hidden;background:#0f1b2d}
-  .hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  .hero-bg{position:absolute;inset:0;z-index:-3;overflow:hidden;background:#002a6b}
+  .hero-bg .wistia_embed{position:absolute;inset:0;width:100%;height:100%;
     opacity:0;transition:opacity .5s ease;will-change:opacity}
-  .hero-bg video.active{opacity:1}
+  .hero-bg .wistia_embed.active{opacity:1}
   /* Voile adaptatif : garde le texte lisible en clair comme en sombre */
   .hero-scrim{position:absolute;inset:0;z-index:-2;
     background:linear-gradient(90deg,
@@ -145,7 +153,7 @@
       color-mix(in srgb,var(--bg) 40%,transparent) 100%);}
   .hero:before{content:"";position:absolute;inset:0;z-index:-1;
     background:radial-gradient(1200px 500px at 78% -10%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 60%);}
-  @media (prefers-reduced-motion: reduce){.hero-bg video{display:none}}
+  @media (prefers-reduced-motion: reduce){.hero-bg .wistia_embed{display:none}}
   .hero .lead{max-width:44ch;margin-top:1.1rem}
   .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
   .territoires{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:.55rem}
@@ -155,7 +163,7 @@
   /* STATS */
   .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft)}
   .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:2.4rem 0;text-align:center}
-  .stat b{display:block;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.03em}
+  .stat b{display:block;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.03em;color:var(--blue)}
   .stat span{color:var(--ink-soft);font-size:.92rem;font-weight:600}
   @media(max-width:560px){.stats-grid{grid-template-columns:1fr;gap:1.6rem}}
 
@@ -166,36 +174,14 @@
   /* À PROPOS */
   .about{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
   @media(max-width:840px){.about{grid-template-columns:1fr}}
-  .photo-ph{
-    aspect-ratio:4/5;border-radius:var(--radius);border:1px solid var(--line);
-    background:linear-gradient(135deg,var(--bg-soft),color-mix(in srgb,var(--accent) 12%,var(--bg-soft)));
-    display:flex;align-items:center;justify-content:center;text-align:center;
-    color:var(--ink-soft);font-weight:600;padding:1.5rem;box-shadow:var(--shadow);
+  .about-photo{
+    aspect-ratio:4/5;width:100%;object-fit:cover;object-position:center top;
+    border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);
   }
-  /* REMPLACER par : <img src="el-amine.webp" width="800" alt="El-Amine Ghalem, courtier immobilier" loading="lazy"> */
   .about ul{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:.7rem}
   .about li{display:flex;gap:.7rem;color:var(--ink-soft)}
   .about li b{color:var(--ink)}
   .check{color:var(--accent);flex:0 0 auto;font-weight:800}
-
-  /* PROPRIÉTÉS */
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-  @media(max-width:840px){.grid-3{grid-template-columns:1fr;max-width:440px;margin-inline:auto}}
-  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
-    overflow:hidden;box-shadow:var(--shadow);transition:transform .18s ease}
-  .card:hover{transform:translateY(-4px)}
-  .card-media{aspect-ratio:16/11;display:flex;align-items:flex-end;padding:1rem;position:relative;color:#fff}
-  /* REMPLACER le fond dégradé par : <img src="fiche-1.webp" width="900" alt="…" loading="lazy"> */
-  .card:nth-child(1) .card-media{background:linear-gradient(135deg,#233a5e,#3d5a82)}
-  .card:nth-child(2) .card-media{background:linear-gradient(135deg,#4a3b5e,#6d5a86)}
-  .card:nth-child(3) .card-media{background:linear-gradient(135deg,#1f4d47,#357a6f)}
-  .badge{background:rgba(0,0,0,.35);backdrop-filter:blur(4px);font-size:.75rem;font-weight:700;
-    letter-spacing:.05em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px}
-  .card-body{padding:1.2rem 1.3rem 1.4rem}
-  .card-price{font-size:1.35rem;font-weight:800;letter-spacing:-.02em}
-  .card-addr{color:var(--ink-soft);font-size:.95rem;margin-top:.15rem}
-  .card-specs{display:flex;gap:1.1rem;margin-top:.9rem;color:var(--ink-soft);font-size:.9rem;font-weight:600}
-  .props-note{margin-top:2rem;text-align:center;color:var(--ink-soft);font-size:.95rem}
 
   /* ÉVALUATION / FORM */
   .eval{background:var(--brand);color:#fff}
@@ -237,7 +223,9 @@
   /* FOOTER */
   footer{border-top:1px solid var(--line);background:var(--bg-soft);padding:3rem 0 2.4rem;font-size:.92rem}
   .foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.6rem}
-  .foot-brand b{font-size:1.05rem}
+  .remax-logo{display:inline-block;background:#fff;padding:.6rem .85rem;border-radius:10px;margin-bottom:1rem;box-shadow:var(--shadow)}
+  .remax-logo img{display:block;height:26px;width:auto}
+  .foot-brand b{display:block;font-size:1.05rem}
   .foot-brand p{color:var(--ink-soft);margin:.4rem 0 0;max-width:34ch}
   .foot-links{display:flex;gap:1.4rem;flex-wrap:wrap}
   .foot-links a{color:var(--ink-soft);font-weight:600}
@@ -248,13 +236,15 @@
 </head>
 <body>
 
+<!-- Barre tricolore RE/MAX -->
+<div class="remax-bar" aria-hidden="true"></div>
+
 <!-- NAV -->
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="brand">El-Amine <span>Ghalem</span></a>
     <nav class="nav-links">
       <a href="#apropos">À propos</a>
-      <a href="#proprietes">Propriétés</a>
       <a href="#evaluation">Évaluation</a>
       <a href="#evaluation" class="btn btn-primary nav-cta">Évaluation gratuite</a>
     </nav>
@@ -265,12 +255,9 @@
 
   <!-- HERO -->
   <section class="hero">
-    <!-- Vidéo de fond : 2 clips joués en boucle, l'un après l'autre, sans arrêt.
-         Remplace hero-1.mp4 / hero-2.mp4 par tes fichiers (voir la liste HERO_SOURCES dans le <script> en bas). -->
-    <div class="hero-bg" aria-hidden="true">
-      <video id="hv-a" muted playsinline autoplay preload="auto"></video>
-      <video id="hv-b" muted playsinline preload="auto"></video>
-    </div>
+    <!-- Vidéo de fond hébergée sur Wistia : 2 clips enchaînés en boucle, sans arrêt.
+         Les lecteurs sont créés par le <script> en bas — colle tes 2 hashed IDs dans HERO_WISTIA. -->
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="wrap">
       <p class="eyebrow">Courtier immobilier · depuis 2010</p>
@@ -278,7 +265,7 @@
       <p class="lead">El-Amine Ghalem accompagne les propriétaires de Laval, Boucherville et des Laurentides à chaque étape — de l'évaluation jusqu'à la signature.</p>
       <div class="hero-cta">
         <a href="#evaluation" class="btn btn-primary">Obtenir mon évaluation gratuite</a>
-        <a href="#proprietes" class="btn btn-ghost">Voir les propriétés</a>
+        <a href="#apropos" class="btn btn-ghost">En savoir plus</a>
       </div>
       <div class="territoires">
         <span class="chip">Laval</span>
@@ -301,7 +288,7 @@
   <!-- À PROPOS -->
   <section id="apropos">
     <div class="wrap about">
-      <div class="photo-ph" aria-label="Photo d'El-Amine Ghalem">Photo d'El-Amine</div>
+      <img class="about-photo" src="amine.avif" width="320" height="400" alt="El-Amine Ghalem, courtier immobilier" loading="lazy" decoding="async">
       <div>
         <p class="eyebrow">À propos</p>
         <h2>Un courtier de terrain, pas un intermédiaire.</h2>
@@ -312,44 +299,6 @@
           <li><span class="check">✓</span><span><b>Disponibilité</b> — un seul interlocuteur, joignable, du début à la fin.</span></li>
         </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- PROPRIÉTÉS -->
-  <section id="proprietes" style="background:var(--bg-soft)">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Propriétés</p>
-        <h2>Quelques inscriptions récentes</h2>
-        <p class="lead">Un aperçu des propriétés vendues et disponibles dans les secteurs desservis.</p>
-      </div>
-      <div class="grid-3">
-        <article class="card">
-          <div class="card-media"><span class="badge">À vendre</span></div>
-          <div class="card-body">
-            <div class="card-price">549 000 $</div>
-            <div class="card-addr">Cottage · Laval (Sainte-Rose)</div>
-            <div class="card-specs"><span>3 ch.</span><span>2 sdb</span><span>2 200 pi²</span></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-media"><span class="badge">Vendu</span></div>
-          <div class="card-body">
-            <div class="card-price">725 000 $</div>
-            <div class="card-addr">Maison · Boucherville</div>
-            <div class="card-specs"><span>4 ch.</span><span>3 sdb</span><span>2 800 pi²</span></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-media"><span class="badge">À vendre</span></div>
-          <div class="card-body">
-            <div class="card-price">419 000 $</div>
-            <div class="card-addr">Condo · Saint-Sauveur (Laurentides)</div>
-            <div class="card-specs"><span>2 ch.</span><span>1 sdb</span><span>1 150 pi²</span></div>
-          </div>
-        </article>
-      </div>
-      <p class="props-note">Vous cherchez une propriété précise ? <a href="#evaluation" style="color:var(--accent);font-weight:700">Écrivez-moi</a> — je vous envoie les inscriptions qui correspondent.</p>
     </div>
   </section>
 
@@ -441,19 +390,19 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
+        <span class="remax-logo"><img src="remax-alliance.svg" width="200" alt="RE/MAX Alliance"></span>
         <b>El-Amine Ghalem</b>
-        <p>Courtier immobilier résidentiel · RE/MAX. Au service de Laval, Boucherville et des Laurentides depuis 2010.</p>
+        <p>Courtier immobilier résidentiel · RE/MAX Alliance. Au service de Laval, Boucherville et des Laurentides depuis 2010.</p>
       </div>
       <nav class="foot-links">
         <a href="#apropos">À propos</a>
-        <a href="#proprietes">Propriétés</a>
         <a href="#evaluation">Évaluation</a>
         <a href="tel:+15140000000">514 000-0000</a>
         <a href="mailto:info@example.com">info@example.com</a>
       </nav>
     </div>
     <div class="foot-legal">
-      <span>© <span id="year"></span> El-Amine Ghalem — Courtier immobilier, RE/MAX. Tous droits réservés.</span>
+      <span>© <span id="year"></span> El-Amine Ghalem — Courtier immobilier, RE/MAX Alliance. Tous droits réservés.</span>
       <span>Site conçu pour la performance.</span>
     </div>
   </div>
@@ -463,45 +412,44 @@
   // Année dynamique
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ==== VIDÉO DE FOND — enchaînement sans coupure ====
-  // Liste tes clips ici (dans l'ordre). Fonctionne avec 2 clips ou plus.
-  // Formats : mets du .mp4 (H.264) pour une compatibilité maximale.
+  // ==== VIDÉO DE FOND — Wistia, 2 clips enchaînés sans coupure ====
+  // 1. Ouvre chaque vidéo dans Wistia → « Embed & Share » → « Inline Embed ».
+  // 2. Récupère le hashed ID (les 10 caractères après wistia_async_ dans le code fourni).
+  // 3. Colle-les ci-dessous, dans l'ordre de lecture. C'est le SEUL endroit à modifier.
   (function(){
-    const HERO_SOURCES = ['hero-1.mp4', 'hero-2.mp4'];
-    const a = document.getElementById('hv-a');
-    const b = document.getElementById('hv-b');
-    if (!a || !b || !HERO_SOURCES.length) return;
+    var HERO_WISTIA = ['VIDEO_ID_1', 'VIDEO_ID_2'];
 
-    const els = [a, b];
-    let cur = 0;   // index de l'élément vidéo actif (0 ou 1)
-    let idx = 0;   // index du clip en cours dans HERO_SOURCES
+    var bg = document.querySelector('.hero-bg');
+    // Tant que les IDs ne sont pas remplacés, on ne charge rien (fond bleu uni).
+    if (!bg || !HERO_WISTIA.length || String(HERO_WISTIA[0]).indexOf('VIDEO_ID') === 0) return;
 
-    function load(el, i){
-      const src = HERO_SOURCES[i % HERO_SOURCES.length];
-      if (el.getAttribute('src') !== src){ el.src = src; el.load(); }
-    }
-    function show(el){ els.forEach(v => v.classList.toggle('active', v === el)); }
+    var OPTS = 'muted=true silentAutoPlay=allow endVideoBehavior=default fitStrategy=cover videoFoam=false '
+             + 'playbar=false playButton=false smallPlayButton=false fullscreenButton=false '
+             + 'controlsVisibleOnLoad=false settingsControl=false volumeControl=false playPauseNotifier=false';
 
-    // Prépare le 1er clip sur A (visible) et le suivant sur B (caché, prêt)
-    load(els[0], 0); show(els[0]); els[0].play().catch(()=>{});
-    load(els[1], 1);
+    var players = [];
+    var els = HERO_WISTIA.map(function(hid, i){
+      var d = document.createElement('div');
+      d.className = 'wistia_embed wistia_async_' + hid + ' ' + OPTS + ' autoPlay=' + (i === 0 ? 'true' : 'false');
+      bg.appendChild(d);
+      return d;
+    });
+    function fadeTo(i){ els.forEach(function(el, k){ el.classList.toggle('active', k === i); }); }
 
-    els.forEach(v => v.addEventListener('ended', function(){
-      if (v !== els[cur]) return;          // ignore l'événement de la vidéo cachée
-      const next = (cur + 1) % 2;
-      idx = (idx + 1) % HERO_SOURCES.length;
-      show(els[next]);                     // fondu vers la vidéo déjà prête
-      els[next].currentTime = 0;
-      els[next].play().catch(()=>{});
-      cur = next;
-      load(els[(next + 1) % 2], idx + 1);  // précharge le clip d'après sur l'élément libéré
-    }));
-
-    // Sécurité iOS : relance la lecture au 1er contact si l'autoplay a été bloqué
-    document.addEventListener('touchstart', function once(){
-      els[cur].play().catch(()=>{});
-      document.removeEventListener('touchstart', once);
-    }, { passive: true });
+    window._wq = window._wq || [];
+    HERO_WISTIA.forEach(function(hid, i){
+      window._wq.push({ id: hid, onReady: function(video){
+        players[i] = video;
+        if (i !== 0){ video.time(0); video.pause(); }   // seul le 1er démarre
+        else { fadeTo(0); }
+        video.bind('end', function(){
+          var next = (i + 1) % HERO_WISTIA.length;
+          if (players[next]){ players[next].time(0); players[next].play(); }
+          fadeTo(next);                                  // fondu vers le clip déjà prêt
+          video.time(0); video.pause();                  // remet celui-ci à zéro pour le tour suivant
+        });
+      }});
+    });
   })();
 
   // ==== FORMULAIRE → GoHighLevel ====
