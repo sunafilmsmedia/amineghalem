@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El-Amine Ghalem — Courtier immobilier | Laval, Boucherville, Laurentides</title>
+<meta name="description" content="El-Amine Ghalem, courtier immobilier depuis 2010. Vente, achat et évaluation gratuite de votre propriété à Laval, Boucherville et dans les Laurentides.">
+<meta name="theme-color" content="#0f1b2d">
+<link rel="canonical" href="https://elamineghalem.com/">
+
+<!-- Favicon — à remplacer par le vrai fichier -->
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Open Graph / partage social -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:site_name" content="El-Amine Ghalem — Courtier immobilier">
+<meta property="og:title" content="El-Amine Ghalem — Courtier immobilier">
+<meta property="og:description" content="Vente, achat et évaluation gratuite de votre propriété à Laval, Boucherville et dans les Laurentides.">
+<meta property="og:url" content="https://elamineghalem.com/">
+<!-- og:image — mettre photo d'El-Amine ou visuel 1200x630 -->
+<meta property="og:image" content="https://elamineghalem.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ===================================================================
+     TRACKING — à activer avant mise en ligne
+     1) Meta Pixel : coller le snippet ici, puis l'événement Lead est
+        déjà déclenché dans le handler du formulaire (voir plus bas :
+        window.fbq && fbq('track', 'Lead')).
+     2) GA4 (ou GTM) : coller le snippet gtag/GTM ici.
+     ===================================================================
+<!-- Meta Pixel Code -->
+<!-- GA4 / gtag.js -->
+-->
+
+<!-- JSON-LD : RealEstateAgent — vérifier sur search.google.com/test/rich-results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "El-Amine Ghalem",
+  "description": "Courtier immobilier résidentiel depuis 2010, desservant Laval, Boucherville et les Laurentides.",
+  "url": "https://elamineghalem.com/",
+  "image": "https://elamineghalem.com/og-image.jpg",
+  "telephone": "+1-514-000-0000",
+  "email": "info@example.com",
+  "priceRange": "$$",
+  "areaServed": [
+    { "@type": "City", "name": "Laval" },
+    { "@type": "City", "name": "Boucherville" },
+    { "@type": "AdministrativeArea", "name": "Laurentides" }
+  ],
+  "memberOf": {
+    "@type": "Organization",
+    "name": "RE/MAX"
+  },
+  "knowsLanguage": ["fr", "en"],
+  "foundingDate": "2010"
+}
+</script>
+
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f4f6f9;
+    --bg-card:#ffffff;
+    --ink:#0f1b2d;
+    --ink-soft:#48566b;
+    --line:#e2e7ee;
+    --brand:#0f1b2d;
+    --accent:#c8a24a;
+    --accent-ink:#0f1b2d;
+    --shadow:0 1px 2px rgba(15,27,45,.04),0 12px 32px rgba(15,27,45,.08);
+    --radius:16px;
+    --maxw:1120px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0b1220;
+      --bg-soft:#0f1a2b;
+      --bg-card:#111d31;
+      --ink:#eef2f8;
+      --ink-soft:#9fb0c6;
+      --line:#1e2c42;
+      --brand:#eef2f8;
+      --accent:#d8b767;
+      --accent-ink:#0b1220;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px rgba(0,0,0,.5);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0}
+  h1{font-size:clamp(2.1rem,5.5vw,3.6rem);font-weight:800}
+  h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800}
+  h3{font-size:1.15rem;font-weight:700}
+  .eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .lead{font-size:1.12rem;color:var(--ink-soft)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:1rem;
+    padding:.85rem 1.5rem;border-radius:999px;border:1px solid transparent;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(200,162,74,.35)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:1.05rem}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;align-items:center;gap:1.6rem}
+  .nav-links a{color:var(--ink-soft);font-weight:600;font-size:.95rem}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{display:inline-flex}
+  @media(max-width:860px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* HERO */
+  .hero{padding:clamp(56px,9vw,110px) 0 clamp(48px,7vw,84px);position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;z-index:-1;
+    background:radial-gradient(1200px 500px at 78% -10%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 60%);}
+  .hero .lead{max-width:44ch;margin-top:1.1rem}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+  .territoires{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:.55rem}
+  .chip{font-size:.85rem;font-weight:600;color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:999px;padding:.35rem .85rem;background:var(--bg-soft)}
+
+  /* STATS */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft)}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:2.4rem 0;text-align:center}
+  .stat b{display:block;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.03em}
+  .stat span{color:var(--ink-soft);font-size:.92rem;font-weight:600}
+  @media(max-width:560px){.stats-grid{grid-template-columns:1fr;gap:1.6rem}}
+
+  section{padding:clamp(56px,8vw,96px) 0}
+  .section-head{max-width:56ch;margin-bottom:2.6rem}
+  .section-head .lead{margin-top:.7rem}
+
+  /* À PROPOS */
+  .about{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  @media(max-width:840px){.about{grid-template-columns:1fr}}
+  .photo-ph{
+    aspect-ratio:4/5;border-radius:var(--radius);border:1px solid var(--line);
+    background:linear-gradient(135deg,var(--bg-soft),color-mix(in srgb,var(--accent) 12%,var(--bg-soft)));
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--ink-soft);font-weight:600;padding:1.5rem;box-shadow:var(--shadow);
+  }
+  /* REMPLACER par : <img src="el-amine.webp" width="800" alt="El-Amine Ghalem, courtier immobilier" loading="lazy"> */
+  .about ul{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:.7rem}
+  .about li{display:flex;gap:.7rem;color:var(--ink-soft)}
+  .about li b{color:var(--ink)}
+  .check{color:var(--accent);flex:0 0 auto;font-weight:800}
+
+  /* PROPRIÉTÉS */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  @media(max-width:840px){.grid-3{grid-template-columns:1fr;max-width:440px;margin-inline:auto}}
+  .card{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow);transition:transform .18s ease}
+  .card:hover{transform:translateY(-4px)}
+  .card-media{aspect-ratio:16/11;display:flex;align-items:flex-end;padding:1rem;position:relative;color:#fff}
+  /* REMPLACER le fond dégradé par : <img src="fiche-1.webp" width="900" alt="…" loading="lazy"> */
+  .card:nth-child(1) .card-media{background:linear-gradient(135deg,#233a5e,#3d5a82)}
+  .card:nth-child(2) .card-media{background:linear-gradient(135deg,#4a3b5e,#6d5a86)}
+  .card:nth-child(3) .card-media{background:linear-gradient(135deg,#1f4d47,#357a6f)}
+  .badge{background:rgba(0,0,0,.35);backdrop-filter:blur(4px);font-size:.75rem;font-weight:700;
+    letter-spacing:.05em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px}
+  .card-body{padding:1.2rem 1.3rem 1.4rem}
+  .card-price{font-size:1.35rem;font-weight:800;letter-spacing:-.02em}
+  .card-addr{color:var(--ink-soft);font-size:.95rem;margin-top:.15rem}
+  .card-specs{display:flex;gap:1.1rem;margin-top:.9rem;color:var(--ink-soft);font-size:.9rem;font-weight:600}
+  .props-note{margin-top:2rem;text-align:center;color:var(--ink-soft);font-size:.95rem}
+
+  /* ÉVALUATION / FORM */
+  .eval{background:var(--brand);color:#fff}
+  @media (prefers-color-scheme: dark){.eval{background:var(--bg-soft)}}
+  .eval .eyebrow{color:var(--accent)}
+  .eval-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  @media(max-width:840px){.eval-grid{grid-template-columns:1fr}}
+  .eval h2,.eval p{color:#fff}
+  .eval .lead{color:rgba(255,255,255,.8)}
+  @media (prefers-color-scheme: dark){.eval h2{color:var(--ink)}.eval .lead{color:var(--ink-soft)}}
+  .eval-benefits{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.7rem}
+  .eval-benefits li{display:flex;gap:.65rem;color:rgba(255,255,255,.85)}
+  @media (prefers-color-scheme: dark){.eval-benefits li{color:var(--ink-soft)}}
+
+  form{background:var(--bg-card);color:var(--ink);border-radius:var(--radius);
+    padding:clamp(1.4rem,3vw,2rem);box-shadow:var(--shadow);border:1px solid var(--line)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+  @media(max-width:520px){.form-row{grid-template-columns:1fr}}
+  .field{margin-bottom:.9rem}
+  label{display:block;font-size:.82rem;font-weight:700;margin-bottom:.35rem}
+  input,select{
+    width:100%;padding:.8rem .9rem;border-radius:10px;border:1px solid var(--line);
+    background:var(--bg);color:var(--ink);font-size:1rem;font-family:inherit;
+  }
+  input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+  form .btn-primary{width:100%;justify-content:center;margin-top:.4rem}
+  .form-legal{font-size:.78rem;color:var(--ink-soft);margin-top:.9rem;text-align:center}
+  .form-success{display:none;text-align:center;padding:1rem 0}
+  .form-success.show{display:block}
+  .form-success h3{color:var(--accent);margin-bottom:.3rem}
+
+  /* CTA CONTACT */
+  .contact-cta{text-align:center}
+  .contact-methods{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:1.8rem}
+  .cta-tile{display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);border-radius:14px;
+    padding:1rem 1.4rem;background:var(--bg-card);font-weight:700;box-shadow:var(--shadow)}
+  .cta-tile small{display:block;color:var(--ink-soft);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);background:var(--bg-soft);padding:3rem 0 2.4rem;font-size:.92rem}
+  .foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.6rem}
+  .foot-brand b{font-size:1.05rem}
+  .foot-brand p{color:var(--ink-soft);margin:.4rem 0 0;max-width:34ch}
+  .foot-links{display:flex;gap:1.4rem;flex-wrap:wrap}
+  .foot-links a{color:var(--ink-soft);font-weight:600}
+  .foot-links a:hover{color:var(--accent)}
+  .foot-legal{margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);
+    color:var(--ink-soft);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-size:.85rem}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">El-Amine <span>Ghalem</span></a>
+    <nav class="nav-links">
+      <a href="#apropos">À propos</a>
+      <a href="#proprietes">Propriétés</a>
+      <a href="#evaluation">Évaluation</a>
+      <a href="#evaluation" class="btn btn-primary nav-cta">Évaluation gratuite</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Courtier immobilier · depuis 2010</p>
+      <h1>Vendez au juste prix,<br>sans mauvaise surprise.</h1>
+      <p class="lead">El-Amine Ghalem accompagne les propriétaires de Laval, Boucherville et des Laurentides à chaque étape — de l'évaluation jusqu'à la signature.</p>
+      <div class="hero-cta">
+        <a href="#evaluation" class="btn btn-primary">Obtenir mon évaluation gratuite</a>
+        <a href="#proprietes" class="btn btn-ghost">Voir les propriétés</a>
+      </div>
+      <div class="territoires">
+        <span class="chip">Laval</span>
+        <span class="chip">Boucherville</span>
+        <span class="chip">Laurentides</span>
+        <span class="chip">Rive-Nord</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="wrap stats-grid">
+      <div class="stat"><b>15+</b><span>années d'expérience</span></div>
+      <div class="stat"><b>350+</b><span>transactions conclues</span></div>
+      <div class="stat"><b>98%</b><span>clients satisfaits</span></div>
+    </div>
+  </div>
+
+  <!-- À PROPOS -->
+  <section id="apropos">
+    <div class="wrap about">
+      <div class="photo-ph" aria-label="Photo d'El-Amine Ghalem">Photo d'El-Amine</div>
+      <div>
+        <p class="eyebrow">À propos</p>
+        <h2>Un courtier de terrain, pas un intermédiaire.</h2>
+        <p class="lead">Depuis 2010, El-Amine Ghalem a bâti sa réputation sur une chose simple : dire les vraies affaires. Analyse de marché rigoureuse, stratégie de mise en marché claire et une négociation menée dans votre intérêt.</p>
+        <ul>
+          <li><span class="check">✓</span><span><b>Évaluation précise</b> — un prix ancré dans les ventes comparables réelles de votre secteur.</span></li>
+          <li><span class="check">✓</span><span><b>Mise en marché soignée</b> — photos, visibilité et positionnement pour attirer les bons acheteurs.</span></li>
+          <li><span class="check">✓</span><span><b>Disponibilité</b> — un seul interlocuteur, joignable, du début à la fin.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPRIÉTÉS -->
+  <section id="proprietes" style="background:var(--bg-soft)">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Propriétés</p>
+        <h2>Quelques inscriptions récentes</h2>
+        <p class="lead">Un aperçu des propriétés vendues et disponibles dans les secteurs desservis.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-media"><span class="badge">À vendre</span></div>
+          <div class="card-body">
+            <div class="card-price">549 000 $</div>
+            <div class="card-addr">Cottage · Laval (Sainte-Rose)</div>
+            <div class="card-specs"><span>3 ch.</span><span>2 sdb</span><span>2 200 pi²</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-media"><span class="badge">Vendu</span></div>
+          <div class="card-body">
+            <div class="card-price">725 000 $</div>
+            <div class="card-addr">Maison · Boucherville</div>
+            <div class="card-specs"><span>4 ch.</span><span>3 sdb</span><span>2 800 pi²</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-media"><span class="badge">À vendre</span></div>
+          <div class="card-body">
+            <div class="card-price">419 000 $</div>
+            <div class="card-addr">Condo · Saint-Sauveur (Laurentides)</div>
+            <div class="card-specs"><span>2 ch.</span><span>1 sdb</span><span>1 150 pi²</span></div>
+          </div>
+        </article>
+      </div>
+      <p class="props-note">Vous cherchez une propriété précise ? <a href="#evaluation" style="color:var(--accent);font-weight:700">Écrivez-moi</a> — je vous envoie les inscriptions qui correspondent.</p>
+    </div>
+  </section>
+
+  <!-- ÉVALUATION / FORMULAIRE -->
+  <section id="evaluation" class="eval">
+    <div class="wrap eval-grid">
+      <div>
+        <p class="eyebrow">Évaluation gratuite</p>
+        <h2>Combien vaut votre propriété aujourd'hui ?</h2>
+        <p class="lead">Recevez une évaluation personnalisée, basée sur les ventes réelles de votre secteur. Sans engagement, sans pression.</p>
+        <ul class="eval-benefits">
+          <li><span class="check">✓</span> Réponse rapide, souvent le jour même</li>
+          <li><span class="check">✓</span> Analyse comparative de votre quartier</li>
+          <li><span class="check">✓</span> Conseils concrets pour maximiser votre prix</li>
+        </ul>
+      </div>
+
+      <form id="eval-form" novalidate>
+        <div id="form-fields">
+          <div class="form-row">
+            <div class="field">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" autocomplete="family-name" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="tel">Téléphone</label>
+              <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" required>
+            </div>
+            <div class="field">
+              <label for="email">Courriel</label>
+              <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="adresse">Adresse de la propriété</label>
+            <input type="text" id="adresse" name="adresse" autocomplete="street-address" required>
+          </div>
+          <div class="field">
+            <label for="projet">Votre projet</label>
+            <select id="projet" name="projet" required>
+              <option value="" disabled selected>Sélectionnez…</option>
+              <option value="Vendre bientôt">Je veux vendre bientôt</option>
+              <option value="Vendre dans 6-12 mois">Je pense vendre (6-12 mois)</option>
+              <option value="Curiosité / valeur">Je veux juste connaître la valeur</option>
+              <option value="Acheter">Je cherche à acheter</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Recevoir mon évaluation</button>
+          <p class="form-legal">Vos informations restent confidentielles. Aucune sollicitation abusive.</p>
+        </div>
+
+        <div class="form-success" id="success">
+          <h3>Merci !</h3>
+          <p>Votre demande est bien reçue. El-Amine vous contacte sous peu.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="contact-cta">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Parlons de votre projet.</h2>
+      <p class="lead" style="margin:.8rem auto 0;max-width:46ch">Une question rapide ? Joignez El-Amine directement.</p>
+      <div class="contact-methods">
+        <a class="cta-tile" href="tel:+15140000000">
+          <span>📞</span>
+          <span><small>Téléphone</small>514 000-0000</span>
+        </a>
+        <a class="cta-tile" href="mailto:info@example.com">
+          <span>✉️</span>
+          <span><small>Courriel</small>info@example.com</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>El-Amine Ghalem</b>
+        <p>Courtier immobilier résidentiel · RE/MAX. Au service de Laval, Boucherville et des Laurentides depuis 2010.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="#apropos">À propos</a>
+        <a href="#proprietes">Propriétés</a>
+        <a href="#evaluation">Évaluation</a>
+        <a href="tel:+15140000000">514 000-0000</a>
+        <a href="mailto:info@example.com">info@example.com</a>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <span>© <span id="year"></span> El-Amine Ghalem — Courtier immobilier, RE/MAX. Tous droits réservés.</span>
+      <span>Site conçu pour la performance.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Année dynamique
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ==== FORMULAIRE → GoHighLevel ====
+  // Coller ici l'URL du Inbound Webhook GHL (Automations → Workflow → Trigger "Inbound Webhook").
+  const WEBHOOK_URL = "";
+
+  const form = document.getElementById('eval-form');
+  const fields = document.getElementById('form-fields');
+  const success = document.getElementById('success');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Envoi…';
+
+    const payload = {
+      prenom:  form.prenom.value.trim(),
+      nom:     form.nom.value.trim(),
+      tel:     form.tel.value.trim(),
+      email:   form.email.value.trim(),
+      adresse: form.adresse.value.trim(),
+      projet:  form.projet.value,
+      tag:     'site-evaluation',
+      source:  'site-el-amine-ghalem',
+      url:     location.href
+    };
+
+    try {
+      if (WEBHOOK_URL) {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } else {
+        console.warn('WEBHOOK_URL vide — payload:', payload);
+      }
+
+      // Affiche le message de succès
+      fields.style.display = 'none';
+      success.classList.add('show');
+
+      // ==== Meta Pixel — événement Lead ====
+      if (window.fbq) { fbq('track', 'Lead'); }
+      // ==== GA4 — conversion (décommenter si gtag présent) ====
+      // if (window.gtag) { gtag('event', 'generate_lead'); }
+
+    } catch (err) {
+      console.error(err);
+      btn.disabled = false;
+      btn.textContent = 'Recevoir mon évaluation';
+      alert("Une erreur est survenue. Réessayez ou appelez au 514 000-0000.");
+    }
+  });
+</script>
+
+</body>
+</html>
