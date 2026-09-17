@@ -24,15 +24,12 @@
 <meta property="og:image:height" content="1000">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- ===================================================================
+<!--
      TRACKING — à activer avant mise en ligne
-     1) Meta Pixel : coller le snippet ici, puis l'événement Lead est
-        déjà déclenché dans le handler du formulaire (voir plus bas :
-        window.fbq && fbq('track', 'Lead')).
+     1) Meta Pixel : coller le snippet ici. L'événement Lead est déjà
+        déclenché dans le handler du formulaire (window.fbq && fbq('track','Lead')).
      2) GA4 (ou GTM) : coller le snippet gtag/GTM ici.
-     ===================================================================
-<!-- Meta Pixel Code -->
-<!-- GA4 / gtag.js -->
+     (Colle les snippets juste APRÈS ce commentaire, pas à l'intérieur.)
 -->
 
 <!-- JSON-LD : RealEstateAgent — vérifier sur search.google.com/test/rich-results -->
@@ -152,8 +149,8 @@
       color-mix(in srgb,var(--bg) 68%,transparent) 45%,
       color-mix(in srgb,var(--bg) 40%,transparent) 100%);}
   /* Dégradé sombre en haut : garde le logo/menu blancs lisibles sur la vidéo */
-  .hero-topfade{position:absolute;top:0;left:0;right:0;height:170px;z-index:-1;
-    background:linear-gradient(to bottom, rgba(4,10,25,.6), rgba(4,10,25,0))}
+  .hero-topfade{position:absolute;top:0;left:0;right:0;height:240px;z-index:-1;
+    background:linear-gradient(to bottom, rgba(4,10,25,.85) 0%, rgba(4,10,25,.5) 45%, rgba(4,10,25,0) 100%)}
   .hero:before{content:"";position:absolute;inset:0;z-index:-1;
     background:radial-gradient(1200px 500px at 78% -10%, color-mix(in srgb,var(--accent) 18%,transparent), transparent 60%);}
   @media (prefers-reduced-motion: reduce){.hero-bg .wistia_embed{display:none}}
