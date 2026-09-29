@@ -296,9 +296,9 @@
       <div class="section-head" style="text-align:center;max-width:660px;margin:0 auto 2.4rem">
         <p class="eyebrow">Secteurs desservis</p>
         <h2>Une expertise ancrée dans le Grand Montréal</h2>
-        <p class="lead">De Montréal à Laval, Boucherville et les Laurentides — un accompagnement local, secteur par secteur.</p>
+        <p class="lead">Montréal, Saint-Laurent, Laval et Boucherville — un accompagnement local, secteur par secteur.</p>
       </div>
-      <div id="map" class="coverage-map" role="img" aria-label="Carte des secteurs desservis par El-Amine Ghalem : Montréal, Saint-Laurent, Laval, Boucherville et les Laurentides"></div>
+      <div id="map" class="coverage-map" role="img" aria-label="Carte des secteurs desservis par El-Amine Ghalem : Montréal, Saint-Laurent, Laval et Boucherville"></div>
       <p class="map-caption">Zones desservies en <b>rouge</b> · principalement Montréal et la Rive-Nord</p>
     </div>
   </section>
@@ -519,13 +519,12 @@
       { nom:'Montréal',      lat:45.5019, lng:-73.5674, rayon:8000, principal:true },
       { nom:'Saint-Laurent', lat:45.5100, lng:-73.6750, rayon:4500, principal:true },
       { nom:'Laval',         lat:45.5700, lng:-73.7200, rayon:6500 },
-      { nom:'Boucherville',  lat:45.6100, lng:-73.4400, rayon:4200 },
-      { nom:'Laurentides',   lat:45.8800, lng:-74.1400, rayon:7500 }
+      { nom:'Boucherville',  lat:45.6100, lng:-73.4400, rayon:4200 }
     ];
 
     // ⚠️ Leaflet exige un centre + zoom AVANT d'ajouter la moindre couche.
     var map = L.map(el, {
-      center:[45.62, -73.75], zoom:9,
+      center:[45.55, -73.62], zoom:11,
       zoomControl:false, scrollWheelZoom:false, dragging:false, touchZoom:false,
       doubleClickZoom:false, boxZoom:false, keyboard:false
     });
@@ -545,8 +544,8 @@
     });
 
     var bounds = L.featureGroup(zones).getBounds();
-    function recadrer(){ map.invalidateSize(); map.fitBounds(bounds, { padding:[45,45] }); }
-    map.fitBounds(bounds, { padding:[45,45] });
+    function recadrer(){ map.invalidateSize(); map.fitBounds(bounds, { padding:[20,20] }); }
+    map.fitBounds(bounds, { padding:[20,20] });
     setTimeout(recadrer, 300);
     window.addEventListener('load', recadrer);
   })();
