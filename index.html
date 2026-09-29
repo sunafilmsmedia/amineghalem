@@ -61,9 +61,6 @@
 <!-- Wistia — lecteur pour la vidéo de fond du hero -->
 <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
 
-<!-- Leaflet — carte des secteurs desservis -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-
 <style>
   :root{
     /* Charte RE/MAX : rouge + bleu + blanc */
@@ -158,21 +155,6 @@
   @media (prefers-reduced-motion: reduce){.hero-bg .wistia_embed{display:none}}
   .hero .lead{max-width:44ch;margin-top:1.1rem}
   .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
-  /* Carte des secteurs desservis */
-  .coverage-map{height:480px;width:100%;border-radius:var(--radius);overflow:hidden;
-    border:1px solid var(--line);box-shadow:var(--shadow);background:#eef1f5;z-index:0}
-  .coverage-map .leaflet-tile{filter:brightness(1.05) saturate(.82)}
-  .map-caption{margin-top:1.1rem;text-align:center;color:var(--ink-soft);font-size:.92rem;font-weight:600}
-  .map-caption b{color:var(--accent)}
-  .leaflet-tooltip.sector-label{background:var(--accent);color:#fff;font-weight:700;font-size:.72rem;
-    padding:.15rem .55rem;border:0;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.3);white-space:nowrap}
-  .leaflet-tooltip.sector-label:before{display:none}
-  @media(max-width:600px){.coverage-map{height:380px}}
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) .coverage-map{background:#0f1a2b}
-    :root:not([data-theme="light"]) .coverage-map .leaflet-tile{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.9)}
-  }
-
   /* DOULEUR */
   .pain-head{max-width:640px;margin:0 auto 2.6rem;text-align:center}
   .pain-head h2 span{color:var(--accent)}
@@ -207,17 +189,10 @@
   .about li b{color:var(--ink)}
   .check{color:var(--accent);flex:0 0 auto;font-weight:800}
 
-  /* PROPRIÉTÉS (lien Centris) */
-  .props-cta{max-width:640px;margin:0 auto;text-align:center}
-  .props-cta .lead{margin:.8rem auto 1.7rem}
-  .props-cta .btn{font-size:1.05rem}
-  .props-sub{margin-top:1.5rem;color:var(--ink-soft);font-size:.95rem}
-  .props-sub a{color:var(--accent);font-weight:700}
-
   /* ÉVALUATION / FORM */
   .eval{background:var(--brand);color:#fff}
   @media (prefers-color-scheme: dark){.eval{background:var(--bg-soft)}}
-  .eval .eyebrow{color:var(--accent)}
+  .eval .eyebrow,.eval .check{color:#ff9aa3}
   .eval-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2rem,5vw,4rem);align-items:center}
   @media(max-width:840px){.eval-grid{grid-template-columns:1fr}}
   .eval h2,.eval p{color:#fff}
@@ -244,12 +219,37 @@
   .form-success.show{display:block}
   .form-success h3{color:var(--accent);margin-bottom:.3rem}
 
-  /* CTA CONTACT */
-  .contact-cta{text-align:center}
-  .contact-methods{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:1.8rem}
-  .cta-tile{display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);border-radius:14px;
-    padding:1rem 1.4rem;background:var(--bg-card);font-weight:700;box-shadow:var(--shadow)}
-  .cta-tile small{display:block;color:var(--ink-soft);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+  /* AVIS GOOGLE */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  @media(max-width:960px){.reviews{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.reviews{grid-template-columns:1fr}}
+  .review{margin:0;background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:1.5rem;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:1rem}
+  .review blockquote{margin:0;color:var(--ink);font-size:.98rem}
+  .review figcaption{margin-top:auto;font-weight:700;font-size:.92rem}
+  .review figcaption small{display:block;color:var(--ink-soft);font-weight:600;font-size:.78rem}
+
+  /* COMMENT ÇA MARCHE */
+  .steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;counter-reset:step}
+  @media(max-width:960px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.steps{grid-template-columns:1fr}}
+  .steps li{counter-increment:step;background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:1.5rem;box-shadow:var(--shadow)}
+  .steps li:before{content:counter(step);display:inline-grid;place-items:center;width:2.2rem;height:2.2rem;
+    border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:800;margin-bottom:.9rem}
+  .steps p{color:var(--ink-soft);margin:.5rem 0 0}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:0 auto}
+  .faq details{border-bottom:1px solid var(--line);padding:1.1rem 0}
+  .faq summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:after{content:"+";color:var(--accent);font-weight:800;font-size:1.3rem;line-height:1}
+  .faq details[open] summary:after{content:"–"}
+  .faq details p{color:var(--ink-soft);margin:.7rem 0 0}
+  .eval-call{margin-top:1.6rem;color:rgba(255,255,255,.85)}
+  .eval-call a{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+  @media (prefers-color-scheme: dark){.eval-call{color:var(--ink-soft)}.eval-call a{color:var(--ink)}}
 
   /* FOOTER */
   footer{border-top:1px solid var(--line);background:var(--bg-soft);padding:3rem 0 2.4rem;font-size:.92rem}
@@ -274,7 +274,7 @@
     <nav class="nav-links">
       <a href="#evaluation">Vendre</a>
       <a href="#evaluation">Acheter</a>
-      <a href="#proprietes">Trouver une propriété</a>
+      <a href="https://www.centris.ca/fr/propriete~a-vendre?q=H4sIAAAAAAAACk2MsQ6CMBRF_6UzQ1k0cWUwxsRBDAthqPQWGh-UtKBpCP_ua3Rge_fce94qBgriJKTIxNO7F3zhNBjkMpfHA1NnjG1xRWTIcQk4w3VeTX0sezWBbZmJkM7K4sOxbjhD-ba_qSH9Ys1YmuH_pbEgHSpFS7Lr9QcumqeFmtE5H1l5p57RHcFqjLNVJLZsPy5BZMfuESfs9qUiiK3ZviZVNG_bAAAA" target="_blank" rel="noopener">Trouver une propriété</a>
     </nav>
   </div>
 </header>
@@ -294,7 +294,52 @@
       <p class="lead">El-Amine Ghalem accompagne les propriétaires de Laval, Boucherville et des Laurentides à chaque étape — de l'évaluation jusqu'à la signature.</p>
       <div class="hero-cta">
         <a href="#evaluation" class="btn btn-primary">Obtenir mon évaluation gratuite</a>
-        <a href="#proprietes" class="btn btn-ghost">Voir mes propriétés</a>
+        <a href="https://www.centris.ca/fr/propriete~a-vendre?q=H4sIAAAAAAAACk2MsQ6CMBRF_6UzQ1k0cWUwxsRBDAthqPQWGh-UtKBpCP_ua3Rge_fce94qBgriJKTIxNO7F3zhNBjkMpfHA1NnjG1xRWTIcQk4w3VeTX0sezWBbZmJkM7K4sOxbjhD-ba_qSH9Ys1YmuH_pbEgHSpFS7Lr9QcumqeFmtE5H1l5p57RHcFqjLNVJLZsPy5BZMfuESfs9qUiiK3ZviZVNG_bAAAA" target="_blank" rel="noopener" class="btn btn-ghost">Voir mes propriétés</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="wrap stats-grid">
+      <div class="stat"><b>15+</b><span>années d'expérience</span></div>
+      <div class="stat"><b>350+</b><span>transactions conclues</span></div>
+      <div class="stat"><b>98%</b><span>clients satisfaits</span></div>
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF : avis Google -->
+  <section id="avis">
+    <div class="wrap">
+      <div class="section-head" style="text-align:center;margin:0 auto 2.4rem">
+        <p class="eyebrow">Avis Google</p>
+        <h2>Ce que ses clients disent de lui</h2>
+      </div>
+      <div class="reviews">
+        <figure class="review">
+          <blockquote>« Si vous cherchez un courtier efficace, proactif et honnête, El-Amine Ghalem est votre homme. J’ai acheté ma première maison avec lui, je l’ai vendue après 5 ans et je viens d’acheter ma deuxième maison également avec lui. »</blockquote>
+          <figcaption>Nabil D.<small>Avis Google · Achat, vente, puis 2<sup>e</sup> achat</small></figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>« Après avoir consulté plus de 5 courtiers différents, c’est le seul à m’avoir apporté du réel support humain et professionnel, toujours à l’écoute… »</blockquote>
+          <figcaption>Sam D.<small>Avis Google · Client</small></figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>« M. El-Amine Ghalem nous a accompagnés dans la préparation et la mise en marché de notre maison. Il a su nous mettre en confiance en nous informant des nombreuses complexités liées à une vente et a travaillé avec nous à notre rythme. »</blockquote>
+          <figcaption>Nalie D.<small>Avis Google · Vente</small></figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>« Vendre une maison dans le cadre d’une succession, c’est éprouvant. M. Ghalem a été d’une aide exceptionnelle durant tout le processus. Sa gentillesse, son écoute, son professionnalisme et son efficacité ont été remarquables. »</blockquote>
+          <figcaption>Chantal D.<small>Avis Google · Vente — succession</small></figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>« Nous nous sommes, en tout temps, sentis entre très bonnes mains et avions le sentiment qu’Amine travaillait pour nos réels meilleurs intérêts. »</blockquote>
+          <figcaption>Yan D.<small>Avis Google · Client</small></figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>« Amine a fait un travail exceptionnel ! Toujours disponible, à l’écoute et centré sur le client. Il a livré un service de grande qualité, au-delà des attentes. Nous le recommandons vivement ! »</blockquote>
+          <figcaption>Imed B.<small>Avis Google · Client</small></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -325,38 +370,17 @@
     </div>
   </section>
 
-  <!-- SECTEURS DESSERVIS (carte) -->
-  <section id="secteurs">
-    <div class="wrap">
-      <div class="section-head" style="text-align:center;max-width:660px;margin:0 auto 2.4rem">
-        <p class="eyebrow">Secteurs desservis</p>
-        <h2>Une expertise ancrée dans le Grand Montréal</h2>
-        <p class="lead">Montréal, Saint-Laurent, Laval et Boucherville — un accompagnement local, secteur par secteur.</p>
-      </div>
-      <div id="map" class="coverage-map" role="img" aria-label="Carte des secteurs desservis par El-Amine Ghalem : Montréal, Saint-Laurent, Laval et Boucherville"></div>
-      <p class="map-caption">Zones desservies en <b>rouge</b> · principalement Montréal et la Rive-Nord</p>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="wrap stats-grid">
-      <div class="stat"><b>15+</b><span>années d'expérience</span></div>
-      <div class="stat"><b>350+</b><span>transactions conclues</span></div>
-      <div class="stat"><b>98%</b><span>clients satisfaits</span></div>
-    </div>
-  </div>
-
-  <!-- À PROPOS -->
+  <!-- SOLUTION -->
   <section id="apropos">
     <div class="wrap about">
       <img class="about-photo" src="amine.jpg" width="461" height="564" alt="El-Amine Ghalem, courtier immobilier" loading="lazy" decoding="async">
       <div>
-        <p class="eyebrow">À propos</p>
-        <h2>Un courtier de terrain, pas un intermédiaire.</h2>
-        <p class="lead">Depuis 2010, El-Amine Ghalem a bâti sa réputation sur une chose simple : dire les vraies affaires. Analyse de marché rigoureuse, stratégie de mise en marché claire et une négociation menée dans votre intérêt.</p>
+        <p class="eyebrow">La solution</p>
+        <h2>Vendre et acheter, avec un seul plan clair.</h2>
+        <p class="lead">El-Amine Ghalem coordonne la vente de votre maison actuelle et l'achat de la prochaine, pour que votre famille passe à la suite sans mauvaise surprise. Depuis 2010, il a bâti sa réputation sur une chose simple : dire les vraies affaires.</p>
         <ul>
-          <li><span class="check">✓</span><span><b>Évaluation précise</b> — un prix ancré dans les ventes comparables réelles de votre secteur.</span></li>
+          <li><span class="check">✓</span><span><b>Un prix honnête</b> — ancré dans les ventes comparables réelles de votre secteur, pas dans ce que vous voulez entendre.</span></li>
+          <li><span class="check">✓</span><span><b>Vente et achat coordonnés</b> — un calendrier pensé pour que la vente et l'achat s'enchaînent au bon moment.</span></li>
           <li><span class="check">✓</span><span><b>Mise en marché soignée</b> — photos, visibilité et positionnement pour attirer les bons acheteurs.</span></li>
           <li><span class="check">✓</span><span><b>Disponibilité</b> — un seul interlocuteur, joignable, du début à la fin.</span></li>
         </ul>
@@ -364,20 +388,40 @@
     </div>
   </section>
 
-  <!-- PROPRIÉTÉS (lien vers les inscriptions Centris live) -->
-  <section id="proprietes" style="background:var(--bg-soft)">
+  <!-- COMMENT ÇA MARCHE -->
+  <section id="etapes" style="background:var(--bg-soft)">
     <div class="wrap">
-      <div class="props-cta">
-        <p class="eyebrow">Propriétés</p>
-        <h2>Mes inscriptions en cours</h2>
-        <p class="lead">Toutes mes propriétés à vendre, mises à jour en temps réel sur Centris — maisons, condos et plex à Laval, Boucherville et dans les Laurentides.</p>
-        <a class="btn btn-primary" href="https://www.centris.ca/fr/propriete~a-vendre?q=H4sIAAAAAAAACk2MsQ6CMBRF_6UzQ1k0cWUwxsRBDAthqPQWGh-UtKBpCP_ua3Rge_fce94qBgriJKTIxNO7F3zhNBjkMpfHA1NnjG1xRWTIcQk4w3VeTX0sezWBbZmJkM7K4sOxbjhD-ba_qSH9Ys1YmuH_pbEgHSpFS7Lr9QcumqeFmtE5H1l5p57RHcFqjLNVJLZsPy5BZMfuESfs9qUiiK3ZviZVNG_bAAAA" target="_blank" rel="noopener">Voir mes inscriptions sur Centris →</a>
-        <p class="props-sub">Aussi sur ma <a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/amine.ghalem" target="_blank" rel="noopener">fiche RE/MAX Québec</a>. Vous cherchez une propriété précise ? <a href="#evaluation">Écrivez-moi</a>.</p>
+      <div class="section-head" style="text-align:center;margin:0 auto 2.4rem">
+        <p class="eyebrow">Comment ça marche</p>
+        <h2>Quatre étapes, du premier appel aux clés</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Évaluation gratuite</h3><p>On établit la valeur réelle de votre maison à partir des ventes récentes de votre secteur.</p></li>
+        <li><h3>Votre plan vente-achat</h3><p>Prix de vente, budget pour la prochaine maison et calendrier : tout est clair avant de commencer.</p></li>
+        <li><h3>Mise en marché et recherche</h3><p>Votre maison est mise en valeur pendant qu'on cible la propriété qui convient à votre famille.</p></li>
+        <li><h3>Négociation et signature</h3><p>El-Amine négocie dans votre intérêt, jusqu'à la remise des clés.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head" style="text-align:center;margin:0 auto 2rem">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions fréquentes</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Dois-je vendre avant d'acheter ?</summary><p>Ça dépend de votre situation financière et du marché. On regarde ensemble les options (vendre d'abord, acheter d'abord ou les deux en parallèle) et on choisit celle qui vous protège le mieux.</p></details>
+        <details><summary>Combien coûte l'évaluation ?</summary><p>Rien. L'évaluation est gratuite et sans engagement.</p></details>
+        <details><summary>Comment est calculée la valeur de ma maison ?</summary><p>À partir des ventes réelles récentes de propriétés comparables dans votre secteur, pas d'une estimation automatique.</p></details>
+        <details><summary>Et si ma maison ne se vend pas au prix voulu ?</summary><p>Le prix est fixé dès le départ selon les données du marché, pas pour vous faire plaisir. C'est ce qui évite les baisses de prix à répétition.</p></details>
+        <details><summary>Quels secteurs desservez-vous ?</summary><p>Montréal, Saint-Laurent, Laval et Boucherville.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- ÉVALUATION / FORMULAIRE -->
+  <!-- CTA FINAL : ÉVALUATION / FORMULAIRE -->
   <section id="evaluation" class="eval">
     <div class="wrap eval-grid">
       <div>
@@ -389,6 +433,7 @@
           <li><span class="check">✓</span> Analyse comparative de votre quartier</li>
           <li><span class="check">✓</span> Conseils concrets pour maximiser votre prix</li>
         </ul>
+        <p class="eval-call">Vous préférez parler directement ? Appelez El-Amine au <a href="tel:+15142942872">514 294-2872</a>.</p>
       </div>
 
       <form id="eval-form" novalidate>
@@ -439,29 +484,6 @@
     </div>
   </section>
 
-  <!-- CONTACT CTA -->
-  <section class="contact-cta">
-    <div class="wrap">
-      <p class="eyebrow">Contact</p>
-      <h2>Parlons de votre projet.</h2>
-      <p class="lead" style="margin:.8rem auto 0;max-width:46ch">Une question rapide ? Joignez El-Amine directement.</p>
-      <div class="contact-methods">
-        <a class="cta-tile" href="tel:+15142942872">
-          <span>📱</span>
-          <span><small>Cellulaire</small>514 294-2872</span>
-        </a>
-        <a class="cta-tile" href="tel:+15143825000">
-          <span>📞</span>
-          <span><small>Bureau</small>514 382-5000</span>
-        </a>
-        <a class="cta-tile" href="mailto:amine.ghalem@remax-quebec.com">
-          <span>✉️</span>
-          <span><small>Courriel</small>amine.ghalem@remax-quebec.com</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <!-- FOOTER -->
@@ -474,8 +496,9 @@
         <p>Courtier immobilier résidentiel · RE/MAX Alliance St-Laurent. Au service de Laval, Boucherville et des Laurentides depuis 2010.</p>
       </div>
       <nav class="foot-links">
-        <a href="#apropos">À propos</a>
-        <a href="#proprietes">Propriétés</a>
+        <a href="#avis">Avis</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://www.centris.ca/fr/propriete~a-vendre?q=H4sIAAAAAAAACk2MsQ6CMBRF_6UzQ1k0cWUwxsRBDAthqPQWGh-UtKBpCP_ua3Rge_fce94qBgriJKTIxNO7F3zhNBjkMpfHA1NnjG1xRWTIcQk4w3VeTX0sezWBbZmJkM7K4sOxbjhD-ba_qSH9Ys1YmuH_pbEgHSpFS7Lr9QcumqeFmtE5H1l5p57RHcFqjLNVJLZsPy5BZMfuESfs9qUiiK3ZviZVNG_bAAAA" target="_blank" rel="noopener">Propriétés</a>
         <a href="#evaluation">Évaluation</a>
         <a href="tel:+15142942872">514 294-2872</a>
         <a href="mailto:amine.ghalem@remax-quebec.com">amine.ghalem@remax-quebec.com</a>
@@ -487,9 +510,6 @@
     </div>
   </div>
 </footer>
-
-<!-- Leaflet — carte des secteurs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
 <script>
   // Année dynamique
@@ -542,47 +562,6 @@
         });
       }});
     });
-  })();
-
-  // ==== CARTE DES SECTEURS DESSERVIS (Leaflet) ====
-  // Pour ajouter/retirer un secteur : modifier la liste SECTEURS ci-dessous.
-  (function(){
-    var el = document.getElementById('map');
-    if (!el || !window.L) return;
-
-    var SECTEURS = [
-      { nom:'Montréal',      lat:45.5019, lng:-73.5674, rayon:8000, principal:true },
-      { nom:'Saint-Laurent', lat:45.5100, lng:-73.6750, rayon:4500, principal:true },
-      { nom:'Laval',         lat:45.5700, lng:-73.7200, rayon:6500 },
-      { nom:'Boucherville',  lat:45.6100, lng:-73.4400, rayon:4200 }
-    ];
-
-    // ⚠️ Leaflet exige un centre + zoom AVANT d'ajouter la moindre couche.
-    var map = L.map(el, {
-      center:[45.55, -73.62], zoom:11,
-      zoomControl:false, scrollWheelZoom:false, dragging:false, touchZoom:false,
-      doubleClickZoom:false, boxZoom:false, keyboard:false
-    });
-
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-      maxZoom:16, attribution:'Tuiles &copy; Esri'
-    }).addTo(map);
-
-    var zones = SECTEURS.map(function(s){
-      var c = L.circle([s.lat, s.lng], {
-        radius: s.rayon,
-        color:'#A50F1E', weight: s.principal ? 2 : 1.5,
-        fillColor:'#A50F1E', fillOpacity: s.principal ? 0.42 : 0.26
-      }).addTo(map);
-      c.bindTooltip(s.nom, { permanent:true, direction:'top', className:'sector-label', offset:[0,-2] });
-      return c;
-    });
-
-    var bounds = L.featureGroup(zones).getBounds();
-    function recadrer(){ map.invalidateSize(); map.fitBounds(bounds, { padding:[20,20] }); }
-    map.fitBounds(bounds, { padding:[20,20] });
-    setTimeout(recadrer, 300);
-    window.addEventListener('load', recadrer);
   })();
 
   // ==== FORMULAIRE → GoHighLevel ====
