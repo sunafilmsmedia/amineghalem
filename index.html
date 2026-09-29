@@ -219,15 +219,54 @@
   .form-success.show{display:block}
   .form-success h3{color:var(--accent);margin-bottom:.3rem}
 
-  /* AVIS GOOGLE */
-  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-  @media(max-width:960px){.reviews{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:620px){.reviews{grid-template-columns:1fr}}
-  .review{margin:0;background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:1.5rem;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:1rem}
-  .review blockquote{margin:0;color:var(--ink);font-size:.98rem}
-  .review figcaption{margin-top:auto;font-weight:700;font-size:.92rem}
-  .review figcaption small{display:block;color:var(--ink-soft);font-weight:600;font-size:.78rem}
+  /* NOTE GOOGLE (bande stats) */
+  .stats-grid{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:1.6rem}}
+  .stat-google{display:flex;flex-direction:column;align-items:center}
+  .stat-google b{display:flex;align-items:center;gap:.5rem}
+  .stat-google .g-logo{width:1.6rem;height:1.6rem}
+  .stat-google .stars svg{width:15px;height:15px}
+  .stat-google a{color:var(--ink-soft);font-size:.92rem;font-weight:600}
+  .stat-google a:hover{color:var(--accent)}
+  .stars{display:inline-flex;gap:2px}
+  .stars svg{width:18px;height:18px;fill:#FBBC04}
+
+  /* CARROUSEL AVIS GOOGLE */
+  .rv{background:linear-gradient(180deg,var(--bg-soft),var(--bg));overflow:hidden}
+  .rv-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;margin-bottom:2.4rem}
+  .rv-badge{display:inline-flex;align-items:center;gap:.7rem;background:var(--bg-card);border:1px solid var(--line);
+    border-radius:999px;padding:.55rem 1.1rem .55rem .7rem;box-shadow:var(--shadow);font-weight:700}
+  .rv-badge .g-logo{width:26px;height:26px}
+  .rv-badge .score{font-size:1.15rem;font-weight:800}
+  .rv-head .big-stars svg{width:34px;height:34px}
+  .rv-head .lead{max-width:48ch;margin:0}
+  .rv-track{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    padding:.6rem max(22px,calc((100vw - var(--maxw))/2 + 22px)) 1.6rem;scrollbar-width:none;
+    cursor:grab;-webkit-overflow-scrolling:touch}
+  .rv-track::-webkit-scrollbar{display:none}
+  .rv-track.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+  .rv-track.dragging *{user-select:none;pointer-events:none}
+  .rv-card{flex:0 0 min(360px,84vw);scroll-snap-align:center;margin:0;background:var(--bg-card);
+    border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:1rem;transition:transform .25s ease, box-shadow .25s ease}
+  .rv-card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(16,26,46,.06),0 20px 44px rgba(16,26,46,.14)}
+  .rv-top{display:flex;align-items:center;justify-content:space-between}
+  .rv-top .g-logo{width:22px;height:22px}
+  .rv-card blockquote{margin:0;font-size:1rem;line-height:1.65;color:var(--ink)}
+  .rv-who{margin-top:auto;display:flex;align-items:center;gap:.75rem;padding-top:1rem;border-top:1px solid var(--line)}
+  .rv-avatar{width:42px;height:42px;border-radius:999px;display:grid;place-items:center;flex:0 0 auto;
+    font-weight:800;color:#fff;background:var(--c,#003DA5)}
+  .rv-who b{display:block;font-size:.95rem}
+  .rv-who small{color:var(--ink-soft);font-weight:600;font-size:.8rem}
+  .rv-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.4rem}
+  .rv-btn{width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--bg-card);
+    color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow);transition:all .15s ease}
+  .rv-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+  .rv-btn:disabled{opacity:.35;pointer-events:none}
+  .rv-btn svg{width:18px;height:18px}
+  .rv-progress{width:min(220px,40vw);height:4px;border-radius:999px;background:var(--line);overflow:hidden}
+  .rv-progress span{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .2s ease}
+  .rv-cta{text-align:center;margin-top:2.2rem}
 
   /* COMMENT ÇA MARCHE */
   .steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;counter-reset:step}
@@ -254,8 +293,8 @@
   /* FOOTER */
   footer{border-top:1px solid var(--line);background:var(--bg-soft);padding:3rem 0 2.4rem;font-size:.92rem}
   .foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.6rem}
-  .remax-logo{display:inline-block;background:#fff;padding:.6rem .85rem;border-radius:10px;margin-bottom:1rem;box-shadow:var(--shadow)}
-  .remax-logo img{display:block;height:26px;width:auto}
+  .remax-logo{display:inline-block;background:#003DA5;padding:.6rem .85rem;border-radius:10px;margin-bottom:1rem;box-shadow:var(--shadow)}
+  .remax-logo img{display:block;height:26px;width:auto;filter:brightness(0) invert(1)}
   .foot-brand b{display:block;font-size:1.05rem}
   .foot-brand p{color:var(--ink-soft);margin:.4rem 0 0;max-width:34ch}
   .foot-links{display:flex;gap:1.4rem;flex-wrap:wrap}
@@ -302,50 +341,15 @@
   <!-- STATS -->
   <div class="stats">
     <div class="wrap stats-grid">
+      <div class="stat stat-google"><b><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>5,0</b><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><a href="#avis">Avis Google</a></div>
       <div class="stat"><b>15+</b><span>années d'expérience</span></div>
       <div class="stat"><b>350+</b><span>transactions conclues</span></div>
       <div class="stat"><b>98%</b><span>clients satisfaits</span></div>
     </div>
   </div>
 
-  <!-- SOCIAL PROOF : avis Google -->
-  <section id="avis">
-    <div class="wrap">
-      <div class="section-head" style="text-align:center;margin:0 auto 2.4rem">
-        <p class="eyebrow">Avis Google</p>
-        <h2>Ce que ses clients disent de lui</h2>
-      </div>
-      <div class="reviews">
-        <figure class="review">
-          <blockquote>« Si vous cherchez un courtier efficace, proactif et honnête, El-Amine Ghalem est votre homme. J’ai acheté ma première maison avec lui, je l’ai vendue après 5 ans et je viens d’acheter ma deuxième maison également avec lui. »</blockquote>
-          <figcaption>Nabil D.<small>Avis Google · Achat, vente, puis 2<sup>e</sup> achat</small></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote>« Après avoir consulté plus de 5 courtiers différents, c’est le seul à m’avoir apporté du réel support humain et professionnel, toujours à l’écoute… »</blockquote>
-          <figcaption>Sam D.<small>Avis Google · Client</small></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote>« M. El-Amine Ghalem nous a accompagnés dans la préparation et la mise en marché de notre maison. Il a su nous mettre en confiance en nous informant des nombreuses complexités liées à une vente et a travaillé avec nous à notre rythme. »</blockquote>
-          <figcaption>Nalie D.<small>Avis Google · Vente</small></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote>« Vendre une maison dans le cadre d’une succession, c’est éprouvant. M. Ghalem a été d’une aide exceptionnelle durant tout le processus. Sa gentillesse, son écoute, son professionnalisme et son efficacité ont été remarquables. »</blockquote>
-          <figcaption>Chantal D.<small>Avis Google · Vente — succession</small></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote>« Nous nous sommes, en tout temps, sentis entre très bonnes mains et avions le sentiment qu’Amine travaillait pour nos réels meilleurs intérêts. »</blockquote>
-          <figcaption>Yan D.<small>Avis Google · Client</small></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote>« Amine a fait un travail exceptionnel ! Toujours disponible, à l’écoute et centré sur le client. Il a livré un service de grande qualité, au-delà des attentes. Nous le recommandons vivement ! »</blockquote>
-          <figcaption>Imed B.<small>Avis Google · Client</small></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
   <!-- DOULEUR -->
-  <section id="situation" style="background:var(--bg-soft)">
+  <section id="situation">
     <div class="wrap">
       <div class="pain-head">
         <h2>Votre maison était parfaite quand vous l'avez achetée.<br><span>Mais avec une famille qui s'agrandit, elle commence à être trop petite ?</span></h2>
@@ -371,7 +375,7 @@
   </section>
 
   <!-- SOLUTION -->
-  <section id="apropos">
+  <section id="apropos" style="background:var(--bg-soft)">
     <div class="wrap about">
       <img class="about-photo" src="amine.jpg" width="461" height="564" alt="El-Amine Ghalem, courtier immobilier" loading="lazy" decoding="async">
       <div>
@@ -389,7 +393,7 @@
   </section>
 
   <!-- COMMENT ÇA MARCHE -->
-  <section id="etapes" style="background:var(--bg-soft)">
+  <section id="etapes">
     <div class="wrap">
       <div class="section-head" style="text-align:center;margin:0 auto 2.4rem">
         <p class="eyebrow">Comment ça marche</p>
@@ -405,7 +409,7 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq">
+  <section id="faq" style="background:var(--bg-soft)">
     <div class="wrap">
       <div class="section-head" style="text-align:center;margin:0 auto 2rem">
         <p class="eyebrow">FAQ</p>
@@ -481,6 +485,95 @@
           <p>Votre demande est bien reçue. El-Amine vous contacte sous peu.</p>
         </div>
       </form>
+    </div>
+  </section>
+
+  <!-- AVIS GOOGLE — carrousel (glisser gauche/droite) -->
+  <section id="avis" class="rv" aria-label="Avis Google">
+    <div class="wrap rv-head">
+      <span class="rv-badge"><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg><span class="score">5,0</span><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span></span>
+      <h2>5 étoiles sur Google</h2>
+      <p class="lead">Des familles qui ont vendu, acheté, ou les deux, avec El-Amine.</p>
+    </div>
+    <div class="rv-track" id="rv-track" tabindex="0" aria-label="Avis clients, glisser pour voir plus">
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Si vous cherchez un courtier efficace, proactif et honnête, El-Amine Ghalem est votre homme. J’ai acheté ma première maison avec lui, je l’ai vendue après 5 ans et je viens d’acheter ma deuxième maison également avec lui. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#003DA5">N</span><span><b>Nabil D.</b><small>Achat, vente, puis 2<sup>e</sup> achat</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Après avoir consulté plus de 5 courtiers différents, c’est le seul à m’avoir apporté du réel support humain et professionnel, toujours à l’écoute. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#A50F1E">S</span><span><b>Sam D.</b><small>Client</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Vendre une maison dans le cadre d’une succession, c’est éprouvant. M. Ghalem a été d’une aide exceptionnelle durant tout le processus. Que vous soyez vendeur ou acheteur, vous êtes entre bonnes mains avec lui ! »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#1f7a5a">C</span><span><b>Chantal D.</b><small>Vente — succession</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Amine a fait un travail exceptionnel ! Toujours disponible, à l’écoute et centré sur le client. Il a livré un service de grande qualité, au-delà des attentes. Nous le recommandons vivement ! »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#7a4bb3">I</span><span><b>Imed B.</b><small>Client</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Il a su nous mettre en confiance en nous informant des nombreuses complexités liées à une vente et a travaillé avec nous à notre rythme. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#c46a12">N</span><span><b>Nalie D.</b><small>Vente</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Merci Amine pour votre gentillesse, votre écoute respectueuse et surtout votre calme. Vous m’avez très bien conseillée. Je n’ai jamais regretté mon choix. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#0f7c8c">D</span><span><b>Danielle V.</b><small>Cliente</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Nous nous sommes, en tout temps, sentis entre très bonnes mains et avions le sentiment qu’Amine travaillait pour nos réels meilleurs intérêts. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#003DA5">Y</span><span><b>Yan D.</b><small>Client</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Infirmière de nuit, j’avais besoin de quelqu’un qui puisse s’adapter à mes horaires atypiques, et il était toujours disponible : soirs, week-ends et même en journée. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#A50F1E">A</span><span><b>Anna N.</b><small>Achat d’un premier condo</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Monsieur Ghalem est un courtier exceptionnel et il maîtrise parfaitement tous les aspects de sa profession. Il est toujours de bon conseil, très respectueux, poli et à l’écoute. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#1f7a5a">S</span><span><b>Sophie C.</b><small>Vente d’un triplex</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« El-Amine est très professionnel, sérieux et toujours disponible. Ses précieux conseils nous ont vraiment aidés lors de l’achat de notre propriété. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#7a4bb3">T</span><span><b>Tinhinene B.</b><small>Achat</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Amine nous a guidés tout au long du processus d’achat de notre première propriété. Il est très professionnel, transparent et passionné par son travail. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#c46a12">E</span><span><b>Eliza E.</b><small>Achat d’une première propriété</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Très professionnel, Amine nous a guidés tout au long du processus de vente et d’achat de propriété. Nous nous sommes sentis bien soutenus et en confiance ! »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#0f7c8c">G</span><span><b>Ghislaine M.</b><small>Vente et achat</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« J’ai beaucoup apprécié vos compétences, votre professionnalisme, votre disponibilité et votre sérieux. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#003DA5">S</span><span><b>Salim R.</b><small>Achat d’une première propriété</small></span></figcaption>
+        </figure>
+        <figure class="rv-card">
+          <div class="rv-top"><span class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.25 4.1 1 5.8L10 14.9l-5.25 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.8-9.9 6.8-17.1z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.7 2.3-8.6 2.3-6.3 0-11.6-4.2-13.5-10l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></div>
+          <blockquote>« Excellent service ! Un courtier professionnel, disponible et toujours à l’écoute. Nous avons été très bien accompagnés tout au long de l’achat de notre maison. »</blockquote>
+          <figcaption class="rv-who"><span class="rv-avatar" style="--c:#A50F1E">C</span><span><b>Client Google</b><small>Achat d’une maison</small></span></figcaption>
+        </figure>
+    </div>
+    <div class="wrap">
+      <div class="rv-nav">
+        <button class="rv-btn" id="rv-prev" aria-label="Avis précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="rv-progress" aria-hidden="true"><span id="rv-bar"></span></div>
+        <button class="rv-btn" id="rv-next" aria-label="Avis suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="rv-cta"><a href="#evaluation" class="btn btn-primary">Obtenir mon évaluation gratuite</a></div>
     </div>
   </section>
 
@@ -562,6 +655,50 @@
         });
       }});
     });
+  })();
+
+  // ==== CARROUSEL AVIS — flèches, glisser à la souris, barre de progression ====
+  (function(){
+    var t = document.getElementById('rv-track');
+    if (!t) return;
+    var prev = document.getElementById('rv-prev'), next = document.getElementById('rv-next'), bar = document.getElementById('rv-bar');
+    function step(){ var c = t.querySelector('.rv-card'); return c ? c.offsetWidth + 19 : 300; }
+    function update(){
+      var max = t.scrollWidth - t.clientWidth;
+      var p = max > 0 ? t.scrollLeft / max : 1;
+      bar.style.width = Math.max(12, Math.round(p * 100)) + '%';
+      prev.disabled = t.scrollLeft < 8;
+      next.disabled = t.scrollLeft > max - 8;
+    }
+    prev.addEventListener('click', function(){ t.scrollBy({ left:-step() }); });
+    next.addEventListener('click', function(){ t.scrollBy({ left: step() }); });
+    t.addEventListener('scroll', update, { passive:true });
+    window.addEventListener('resize', update);
+    t.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight'){ e.preventDefault(); t.scrollBy({ left: step() }); }
+      if (e.key === 'ArrowLeft'){ e.preventDefault(); t.scrollBy({ left:-step() }); }
+    });
+    // Glisser à la souris (le tactile glisse nativement)
+    var down = false, startX = 0, startLeft = 0, moved = false;
+    t.addEventListener('pointerdown', function(e){
+      if (e.pointerType !== 'mouse') return;
+      down = true; moved = false; startX = e.clientX; startLeft = t.scrollLeft;
+    });
+    window.addEventListener('pointermove', function(e){
+      if (!down) return;
+      var dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 4){ moved = true; t.classList.add('dragging'); }
+      if (moved) t.scrollLeft = startLeft - dx;
+    });
+    window.addEventListener('pointerup', function(){
+      if (!down) return;
+      down = false;
+      if (moved){
+        t.classList.remove('dragging');
+        var s = step(); t.scrollTo({ left: Math.round(t.scrollLeft / s) * s });
+      }
+    });
+    update();
   })();
 
   // ==== FORMULAIRE → GoHighLevel ====
