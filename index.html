@@ -262,9 +262,9 @@
   <div class="wrap nav-inner">
     <a href="#top" class="brand" aria-label="Accueil — El-Amine Ghalem, RE/MAX Alliance St-Laurent"><img src="remax-alliance.svg" alt="RE/MAX Alliance St-Laurent"></a>
     <nav class="nav-links">
-      <a href="#apropos">À propos</a>
-      <a href="#proprietes">Propriétés</a>
-      <a href="#evaluation">Évaluation</a>
+      <a href="#evaluation">Vendre</a>
+      <a href="#evaluation">Acheter</a>
+      <a href="#proprietes">Trouver une propriété</a>
       <a href="#evaluation" class="btn btn-primary nav-cta">Évaluation gratuite</a>
     </nav>
   </div>
@@ -523,7 +523,9 @@
       { nom:'Laurentides',   lat:45.8800, lng:-74.1400, rayon:7500 }
     ];
 
+    // ⚠️ Leaflet exige un centre + zoom AVANT d'ajouter la moindre couche.
     var map = L.map(el, {
+      center:[45.62, -73.75], zoom:9,
       zoomControl:false, scrollWheelZoom:false, dragging:false, touchZoom:false,
       doubleClickZoom:false, boxZoom:false, keyboard:false
     });
@@ -542,8 +544,11 @@
       return c;
     });
 
-    map.fitBounds(L.featureGroup(zones).getBounds(), { padding:[45,45] });
-    setTimeout(function(){ map.invalidateSize(); }, 250);
+    var bounds = L.featureGroup(zones).getBounds();
+    function recadrer(){ map.invalidateSize(); map.fitBounds(bounds, { padding:[45,45] }); }
+    map.fitBounds(bounds, { padding:[45,45] });
+    setTimeout(recadrer, 300);
+    window.addEventListener('load', recadrer);
   })();
 
   // ==== FORMULAIRE → GoHighLevel ====
