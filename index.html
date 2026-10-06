@@ -181,6 +181,15 @@
   .center{text-align:center;margin-left:auto;margin-right:auto}
   .center .eyebrow:after{content:"";width:28px;height:1px;background:currentColor}
 
+  /* OUTIL BON MOMENT */
+  .timing{padding:clamp(56px,7vw,88px) 0;background:#0c1b33;color:#f3efe7;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold)}
+  .timing-inner{display:flex;align-items:center;justify-content:space-between;gap:2.4rem 4rem;flex-wrap:wrap}
+  .timing-inner>div{max-width:62ch}
+  .timing h2{color:#f3efe7}
+  .timing h2 em{color:var(--gold)}
+  .timing .lead{color:#c4c8d2;margin:1rem 0 0}
+  .timing .btn{flex-shrink:0}
+
   /* STATS */
   .stats{background:var(--bg);border-bottom:1px solid var(--line)}
   .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);padding:3.2rem 0;text-align:center}
@@ -342,6 +351,7 @@
   <div class="wrap nav-inner">
     <a href="#top" class="brand" aria-label="Accueil — El-Amine Ghalem, RE/MAX Alliance St-Laurent"><img src="remax-alliance.svg" alt="RE/MAX Alliance St-Laurent"></a>
     <nav class="nav-links">
+      <a href="https://eval-amine.vercel.app/" target="_blank" rel="noopener">Bon moment pour vendre ?</a>
       <a href="#evaluation">Vendre</a>
       <a href="#evaluation">Acheter</a>
       <a href="https://www.centris.ca/fr/propriete~a-vendre?q=H4sIAAAAAAAACk2MsQ6CMBRF_6UzQ1k0cWUwxsRBDAthqPQWGh-UtKBpCP_ua3Rge_fce94qBgriJKTIxNO7F3zhNBjkMpfHA1NnjG1xRWTIcQk4w3VeTX0sezWBbZmJkM7K4sOxbjhD-ba_qSH9Ys1YmuH_pbEgHSpFS7Lr9QcumqeFmtE5H1l5p57RHcFqjLNVJLZsPy5BZMfuESfs9qUiiK3ZviZVNG_bAAAA" target="_blank" rel="noopener">Trouver une propriété</a>
@@ -404,6 +414,18 @@
           <p>Vous vous dites que les courtiers sont tous pareils, alors vous repoussez la décision.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- OUTIL : BON MOMENT POUR VENDRE -->
+  <section class="timing" aria-label="Est-ce le bon moment pour vendre ?">
+    <div class="wrap timing-inner">
+      <div>
+        <p class="eyebrow">Outil gratuit · 2 minutes</p>
+        <h2>Est-ce le <em>bon moment</em> pour vendre ?</h2>
+        <p class="lead">Répondez à quelques questions sur votre maison et votre situation : l'outil d'El-Amine vous dit si c'est le moment de mettre en vente, ou s'il vaut mieux attendre.</p>
+      </div>
+      <a href="https://eval-amine.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary">Obtenir ma réponse</a>
     </div>
   </section>
 
