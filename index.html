@@ -61,10 +61,10 @@
 <!-- Wistia — lecteur pour la vidéo de fond du hero -->
 <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
 
-<!-- Polices : Times New Roman (titres, système) + Manrope (texte) -->
+<!-- Polices : Overpass (titres, inspirée de Highway Gothic) + Manrope (texte) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600;700;800&display=swap">
 
 <style>
   :root{
@@ -83,7 +83,7 @@
     --shadow:0 1px 1px rgba(15,26,46,.04),0 30px 60px -30px rgba(15,26,46,.22);
     --radius:6px;
     --maxw:1180px;
-    --serif:"Times New Roman",Times,serif;
+    --serif:"Overpass","Highway Gothic",Arial,sans-serif;
     --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   @media (prefers-color-scheme: dark){
@@ -167,6 +167,13 @@
   .hero h1 em{color:var(--accent)}
   .hero .lead{max-width:46ch;margin-top:1.6rem;font-size:1.15rem}
   .hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.4rem}
+  .hero-grid{display:grid;grid-template-columns:1.5fr .7fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+  .hero-grid>*{min-width:0}
+  .hero-grid h1{font-size:clamp(2.6rem,5.4vw,4.4rem)}
+  .hero-photo{position:relative;padding:0 16px 16px 0;max-width:400px;justify-self:end;width:100%}
+  .hero-photo:before{content:"";position:absolute;inset:16px 0 0 16px;border:1px solid var(--gold);border-radius:2px}
+  .hero-photo img{position:relative;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:2px;box-shadow:var(--shadow)}
+  @media(max-width:840px){.hero-grid{grid-template-columns:1fr}.hero-photo{justify-self:start;max-width:320px}}
 
   section{padding:clamp(80px,10vw,136px) 0}
   .section-head{max-width:60ch;margin-bottom:3.4rem}
@@ -350,7 +357,8 @@
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-topfade" aria-hidden="true"></div>
-    <div class="wrap">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
       <p class="eyebrow">Courtier immobilier · depuis 2010</p>
       <h1>Vendez au juste prix,<br><em>sans mauvaise surprise.</em></h1>
       <p class="lead">El-Amine Ghalem accompagne les propriétaires de Laval, Boucherville et des Laurentides à chaque étape — de l'évaluation jusqu'à la signature.</p>
@@ -358,6 +366,8 @@
         <a href="#evaluation" class="btn btn-primary">Obtenir mon évaluation gratuite</a>
         <a href="https://www.centris.ca/fr/propriete~a-vendre?q=H4sIAAAAAAAACk2MsQ6CMBRF_6UzQ1k0cWUwxsRBDAthqPQWGh-UtKBpCP_ua3Rge_fce94qBgriJKTIxNO7F3zhNBjkMpfHA1NnjG1xRWTIcQk4w3VeTX0sezWBbZmJkM7K4sOxbjhD-ba_qSH9Ys1YmuH_pbEgHSpFS7Lr9QcumqeFmtE5H1l5p57RHcFqjLNVJLZsPy5BZMfuESfs9qUiiK3ZviZVNG_bAAAA" target="_blank" rel="noopener" class="btn btn-ghost">Voir mes propriétés</a>
       </div>
+      </div>
+      <div class="hero-photo"><img src="amine-hero.jpg" width="825" height="1100" alt="El-Amine Ghalem, courtier immobilier RE/MAX Alliance" fetchpriority="high" decoding="async"></div>
     </div>
   </section>
 
