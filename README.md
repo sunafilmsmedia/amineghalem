@@ -1,11 +1,11 @@
-# Site — El-Amine Ghalem (courtier immobilier RE/MAX Alliance)
+# Site — El Amine Ghalem (courtier immobilier RE/MAX Alliance)
 
 Page unique, self-contained (`index.html`). Charte RE/MAX (rouge `#DC1C2E` / bleu `#003DA5` / blanc).
 Aucun build. Hébergement statique : Vercel ou Netlify.
 
 ## Fichiers
 - `index.html` — le site
-- `amine.jpg` — portrait d'El-Amine (section À propos, 461×564)
+- `amine.jpg` — portrait d'El Amine (section À propos, 461×564)
 - `amine-banner.jpg` — bannière lifestyle (utilisée en og:image de partage, 2000×1000)
 - `remax-alliance.svg` — logo RE/MAX Alliance (footer)
 - `robots.txt`, `sitemap.xml`, `llms.txt` — SEO / IA (remplacer le domaine si ≠ elamineghalem.com)
