@@ -167,19 +167,25 @@
   .hero h1 em{color:var(--accent)}
   .hero .lead{max-width:46ch;margin-top:1.6rem;font-size:1.15rem}
   .hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.4rem}
-  .hero-grid{display:grid;grid-template-columns:1.5fr .7fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
-  .hero-grid>*{min-width:0}
-  .hero-grid h1{font-size:clamp(2.6rem,5.4vw,4.4rem)}
-  .hero-photo{position:relative;padding:0 16px 16px 0;max-width:400px;justify-self:end;width:100%}
-  .hero-photo:before{content:"";position:absolute;inset:16px 0 0 16px;border:1px solid var(--gold);border-radius:2px}
-  .hero-photo img{position:relative;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:2px;box-shadow:var(--shadow)}
-  @media(max-width:840px){.hero-grid{grid-template-columns:1fr}.hero-photo{justify-self:start;max-width:320px}}
 
   section{padding:clamp(80px,10vw,136px) 0}
   .section-head{max-width:60ch;margin-bottom:3.4rem}
   .section-head .lead{margin-top:1rem}
   .center{text-align:center;margin-left:auto;margin-right:auto}
   .center .eyebrow:after{content:"";width:28px;height:1px;background:currentColor}
+
+  /* QUI EST EL-AMINE */
+  .story{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2.4rem,6vw,6rem);align-items:center}
+  .story>*{min-width:0}
+  .story h2{margin-bottom:1.6rem}
+  .story-text>p:not(.eyebrow){color:var(--ink-soft);margin:0 0 1.1rem;max-width:60ch}
+  .story-quote{margin:2rem 0 0;padding:0 0 0 1.4rem;border-left:2px solid var(--gold);font-family:var(--serif);font-style:italic;font-size:1.25rem;line-height:1.45;color:var(--ink)}
+  .story-quote cite{display:block;margin-top:.7rem;font-family:var(--sans);font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+  .story-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin:2.4rem 0 0;padding-top:1.8rem;border-top:1px solid var(--line)}
+  .story-facts dt{font-family:var(--serif);font-size:2.2rem;line-height:1;color:var(--ink)}
+  .story-facts dd{margin:.5rem 0 0;font-size:.82rem;color:var(--ink-soft);line-height:1.45}
+  .story-photo img{aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
+  @media(max-width:840px){.story{grid-template-columns:1fr}.story-photo{order:-1;max-width:360px}}
 
   /* OUTIL BON MOMENT */
   .timing{padding:clamp(56px,7vw,88px) 0;background:#0c1b33;color:#f3efe7;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold)}
@@ -368,8 +374,7 @@
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-topfade" aria-hidden="true"></div>
-    <div class="wrap hero-grid">
-      <div class="hero-text">
+    <div class="wrap">
       <p class="eyebrow">Courtier immobilier · depuis 2010</p>
       <h1>Vendez au juste prix,<br><em>sans mauvaise surprise.</em></h1>
       <p class="lead">El-Amine Ghalem accompagne les propriétaires de Laval, Boucherville et des Laurentides à chaque étape — de l'évaluation jusqu'à la signature.</p>
@@ -377,8 +382,6 @@
         <a href="#evaluation" class="btn btn-primary">Obtenir mon évaluation gratuite</a>
         <a href="https://www.centris.ca/fr/propriete~a-vendre?q=H4sIAAAAAAAACk2MsQ6CMBRF_6UzQ1k0cWUwxsRBDAthqPQWGh-UtKBpCP_ua3Rge_fce94qBgriJKTIxNO7F3zhNBjkMpfHA1NnjG1xRWTIcQk4w3VeTX0sezWBbZmJkM7K4sOxbjhD-ba_qSH9Ys1YmuH_pbEgHSpFS7Lr9QcumqeFmtE5H1l5p57RHcFqjLNVJLZsPy5BZMfuESfs9qUiiK3ZviZVNG_bAAAA" target="_blank" rel="noopener" class="btn btn-ghost">Voir mes propriétés</a>
       </div>
-      </div>
-      <div class="hero-photo"><img src="amine-hero.jpg" width="825" height="1100" alt="El-Amine Ghalem, courtier immobilier RE/MAX Alliance" fetchpriority="high" decoding="async"></div>
     </div>
   </section>
 
@@ -463,8 +466,28 @@
     </div>
   </section>
 
+  <!-- QUI EST EL-AMINE -->
+  <section id="histoire" style="background:var(--bg-soft)">
+    <div class="wrap story">
+      <div class="story-text">
+        <p class="eyebrow">Votre courtier</p>
+        <h2>Qui est <em>El-Amine Ghalem</em>&nbsp;?</h2>
+        <p>El-Amine Ghalem est courtier immobilier résidentiel depuis 2010. Depuis plus de 15 ans, il accompagne des familles de Laval, de Boucherville et des Laurentides, sous la bannière RE/MAX Alliance St-Laurent.</p>
+        <p>Premier condo, vente d'un triplex, succession, vente et achat en même temps : en plus de 350 transactions, il a vu presque toutes les situations. Ce qui n'a pas changé, c'est sa façon de travailler : dire les vraies affaires, même quand ce n'est pas ce que le client veut entendre.</p>
+        <p>Ses clients le décrivent comme calme, à l'écoute et disponible, les soirs et les week-ends compris. Plusieurs reviennent le voir pour leur prochaine propriété.</p>
+        <blockquote class="story-quote">« J'ai acheté ma première maison avec lui, je l'ai vendue après 5 ans et je viens d'acheter ma deuxième maison également avec&nbsp;lui.&nbsp;»<cite>Nabil D., client depuis son premier achat</cite></blockquote>
+        <dl class="story-facts">
+          <div><dt>2010</dt><dd>Début comme courtier</dd></div>
+          <div><dt>350+</dt><dd>Transactions conclues</dd></div>
+          <div><dt>3</dt><dd>Territoires : Laval, Boucherville, Laurentides</dd></div>
+        </dl>
+      </div>
+      <div class="about-frame story-photo"><img class="about-photo" src="amine-histoire.jpg" width="825" height="1100" alt="El-Amine Ghalem dans son bureau" loading="lazy" decoding="async"></div>
+    </div>
+  </section>
+
   <!-- FAQ -->
-  <section id="faq" style="background:var(--bg-soft)">
+  <section id="faq">
     <div class="wrap">
       <div class="section-head center">
         <p class="eyebrow">FAQ</p>
