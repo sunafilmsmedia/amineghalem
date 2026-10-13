@@ -167,7 +167,10 @@
   .hero-topfade{position:absolute;top:0;left:0;right:0;height:240px;z-index:-1;
     background:linear-gradient(to bottom, rgba(6,12,24,.85) 0%, rgba(6,12,24,.45) 45%, rgba(6,12,24,0) 100%)}
   @media (prefers-reduced-motion: reduce){.hero-bg .wistia_embed{display:none}}
-  .hero-name{font-family:var(--serif);font-weight:800;font-size:clamp(1.3rem,2.4vw,1.9rem);letter-spacing:-.01em;line-height:1.1;margin:0 0 .7rem}
+  .hero-name{display:flex;align-items:center;gap:.8rem;font-family:var(--sans);font-weight:700;font-size:.86rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);line-height:1.2;margin:0 0 .6rem}
+  .hero-name:before{content:"";width:28px;height:1px;background:currentColor}
+  .hero .eyebrow{padding-left:calc(28px + .8rem)}
+  .hero .eyebrow:before{display:none}
   .hero h1 em{color:var(--accent)}
   .hero .lead{max-width:46ch;margin-top:1.6rem;font-size:1.15rem}
   .hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.4rem}
