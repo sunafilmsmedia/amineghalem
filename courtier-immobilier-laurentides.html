@@ -25,7 +25,7 @@
   "email": "amine.ghalem@remax-quebec.com",
   "parentOrganization": {
    "@type": "Organization",
-   "name": "RE/MAX Alliance St-Laurent"
+   "name": "RE/MAX ALLIANCE INC., Agence immobilière", "telephone": "+1-514-382-5000", "address": {"@type": "PostalAddress", "streetAddress": "10310, boul. St-Laurent", "addressLocality": "Montréal", "addressRegion": "QC", "postalCode": "H3L 2P2", "addressCountry": "CA"}
   },
   "areaServed": [
    {
@@ -59,13 +59,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,800;1,500;1,800&family=Manrope:wght@400;600;700&display=swap">
 <style>
   :root{
-    --bg:#fbfaf7;--bg-soft:#f4f0e8;--bg-card:#ffffff;--ink:#0f1a2e;--ink-soft:#5b6272;--line:#e6e0d4;
-    --brand:#0c1b33;--accent:#A50F1E;--gold:#a8844f;--maxw:1080px;
+    --bg:#f7f5ee;--bg-soft:#efeadf;--bg-card:#ffffff;--ink:#000e35;--ink-soft:#4a5068;--line:#e2dccd;
+    --brand:#000e35;--blue:#0043ff;--accent:#ff1200;--gold:#0043ff;--maxw:1080px;
     --serif:"Montserrat","Arial Black",Arial,sans-serif;
     --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{--bg:#0a0f1a;--bg-soft:#0f1522;--bg-card:#121a2a;--ink:#f3efe7;--ink-soft:#a9afbd;--line:#242d3e;--brand:#070c16;--accent:#e0293a;--gold:#cfa86a}
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -85,11 +82,11 @@
   .btn-primary:hover{background:#860b18}
   .btn-ghost{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 35%,transparent)}
   .btn-ghost:hover{background:var(--ink);color:var(--bg)}
-  header{background:var(--brand);color:#fff}
+  header{background:#f7f5ee;color:var(--ink);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1rem}
-  .nav img{height:22px;width:auto;filter:brightness(0) invert(1)}
-  .nav a.back{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8);text-decoration:none}
-  .nav a.back:hover{color:#fff}
+  .nav img{height:32px;width:auto;display:block}
+  .nav a.back{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+  .nav a.back:hover{color:var(--accent)}
   .crumbs{font-size:.8rem;color:var(--ink-soft);margin:0 0 2rem}
   .crumbs a{text-decoration:none}
   .crumbs a:hover{color:var(--accent)}
@@ -118,12 +115,14 @@
   .why{padding:0;margin:0}
   .why li:last-child{border-bottom:1px solid var(--line)}
   .why b{color:var(--ink)}
-  .cta{background:var(--brand);color:#f3efe7}
-  .cta h2{color:#f3efe7}
-  .cta h2 em{color:var(--gold)}
-  .cta p{color:#c4c8d2;max-width:60ch}
-  .cta .btn-ghost{color:#f3efe7;border-color:rgba(243,239,231,.4)}
-  .cta .btn-ghost:hover{background:#f3efe7;color:#0c1b33}
+  .cta{background:#0043ff;color:#f7f5ee}
+  .cta h2{color:#f7f5ee}
+  .cta .eyebrow{color:#f7f5ee}
+  .cta h2 em{color:#f7f5ee}
+  .cta p{color:rgba(247,245,238,.9);max-width:60ch}
+  .cta p a{color:#fff}
+  .cta .btn-ghost{color:#f7f5ee;border-color:rgba(247,245,238,.55)}
+  .cta .btn-ghost:hover{background:#f7f5ee;color:#0043ff}
   .sources{font-size:.82rem;color:var(--ink-soft)}
   .sources ul{padding-left:1.1rem;margin:.6rem 0 0}
   .sources li{margin:.3rem 0}
@@ -136,7 +135,7 @@
 </head>
 <body>
 <header><div class="wrap nav">
-  <a href="/" aria-label="Accueil : El Amine Ghalem, RE/MAX Alliance St-Laurent"><img src="remax-alliance.svg" alt="RE/MAX Alliance St-Laurent"></a>
+  <a href="/" aria-label="Accueil : El Amine Ghalem, RE/MAX Alliance"><img src="remax-alliance-standard.svg" width="254" height="32" alt="RE/MAX Alliance"></a>
   <a class="back" href="/">El Amine Ghalem</a>
 </div></header>
 
@@ -217,7 +216,7 @@
       <h2>Pourquoi travailler avec <em>El Amine</em> dans les Laurentides</h2>
     </div>
     <ul class="why">
-      <li><b>Depuis 2010 :</b> plus de 15 ans comme courtier immobilier résidentiel, sous la bannière RE/MAX Alliance St-Laurent.</li>
+      <li><b>Depuis 2010 :</b> plus de 15 ans comme courtier immobilier résidentiel et commercial, avec l'agence RE/MAX Alliance.</li>
       <li><b>350+ transactions :</b> premier achat, vente d'un plex, succession, vente et achat coordonnés.</li>
       <li><b>Un prix honnête :</b> établi à partir des ventes comparables réelles de votre secteur.</li>
       <li><b>5,0 sur Google :</b> des clients qui reviennent pour leur prochaine propriété.</li>
@@ -231,6 +230,7 @@
     <div class="hero-cta">
       <a class="btn btn-primary" href="/#evaluation">Obtenir mon évaluation gratuite</a>
       <a class="btn btn-ghost" href="https://eval-amine.vercel.app/" target="_blank" rel="noopener">Est-ce le bon moment pour vendre ?</a>
+      <a class="btn btn-ghost" href="https://www.remax-quebec.com/fr/courtiers-immobiliers/amine.ghalem" target="_blank" rel="noopener">Voir mes propriétés</a>
     </div>
   </div></section>
 
@@ -251,7 +251,7 @@
 </main>
 
 <footer><div class="wrap">
-  <span>© 2026 El Amine Ghalem, courtier immobilier, RE/MAX Alliance St-Laurent.</span>
+  <span>El Amine Ghalem, courtier immobilier résidentiel et commercial<br>RE/MAX ALLIANCE INC., Agence immobilière<br>10310, boul. St-Laurent, Montréal (Québec) H3L 2P2 · Agence : <a href="tel:+15143825000">514 382-5000</a><br><a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/amine.ghalem" target="_blank" rel="noopener">Ma page RE/MAX Québec</a></span>
   <a href="politique-confidentialite.html">Politique de confidentialité</a>
 </div></footer>
 </body>
