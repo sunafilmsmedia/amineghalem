@@ -87,10 +87,10 @@
     --ink-soft:#4a5068;
     --line:#e2dccd;
     --brand:#000e35;
-    --blue:#0043ff;         /* Bleu RE/MAX */
-    --accent:#ff1200;       /* Rouge RE/MAX */
+    --blue:#000e35;         /* Bleu foncé RE/MAX */
+    --accent:#660000;       /* Rouge foncé RE/MAX */
     --accent-ink:#ffffff;
-    --gold:#0043ff;         /* Détails : bleu RE/MAX */
+    --gold:#660000;         /* Détails : rouge foncé RE/MAX */
     --shadow:none;
     --radius:6px;
     --maxw:1180px;
@@ -124,7 +124,7 @@
     transition:background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
   }
   .btn-primary{background:var(--accent);color:var(--accent-ink)}
-  .btn-primary:hover{background:#860b18}
+  .btn-primary:hover{background:#4a0000}
   .btn-ghost{background:transparent;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 35%,transparent)}
   .btn-ghost:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
 
@@ -163,7 +163,8 @@
   .hero .eyebrow:before{display:none}
   .hero{color:#f7f5ee}
   .hero h1{color:#f7f5ee}
-  .hero h1 em{color:var(--accent)}
+  .hero h1 em{color:#f7f5ee;background:#660000;padding:0 .18em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .hero .btn-primary,.timing .btn-primary{border-color:rgba(247,245,238,.55)}
   .hero .eyebrow,.hero-name{color:#f7f5ee}
   .hero .btn-ghost{color:#f7f5ee;border-color:rgba(247,245,238,.45)}
   .hero .btn-ghost:hover{background:#f7f5ee;color:#000e35;border-color:#f7f5ee}
@@ -193,7 +194,7 @@
   @media(max-width:840px){.story{grid-template-columns:1fr}.story-photo{order:-1;max-width:360px}}
 
   /* OUTIL BON MOMENT */
-  .timing{padding:clamp(56px,7vw,88px) 0;background:#0043ff;color:#f7f5ee}
+  .timing{padding:clamp(56px,7vw,88px) 0;background:#000e35;color:#f7f5ee}
   .timing-inner{display:flex;align-items:center;justify-content:space-between;gap:2.4rem 4rem;flex-wrap:wrap}
   .timing-inner>div{max-width:62ch}
   .timing h2{color:#f7f5ee}
@@ -272,7 +273,7 @@
   .faq details p{color:var(--ink-soft);margin:.9rem 0 0;max-width:62ch}
 
   /* ÉVALUATION / FORM */
-  .eval{background:#0043ff;color:#fff;position:relative;overflow:hidden}
+  .eval{background:#000e35;color:#fff;position:relative;overflow:hidden}
   .eval .eyebrow{color:#f7f5ee}
   .eval-grid{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2.4rem,6vw,6rem);align-items:center}
   @media(max-width:840px){.eval-grid{grid-template-columns:1fr}}

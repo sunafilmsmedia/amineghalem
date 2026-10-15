@@ -64,7 +64,7 @@
 <style>
   :root{
     --bg:#f7f5ee;--bg-soft:#efeadf;--bg-card:#ffffff;--ink:#000e35;--ink-soft:#4a5068;--line:#e2dccd;
-    --brand:#000e35;--blue:#0043ff;--accent:#ff1200;--gold:#0043ff;--maxw:1080px;
+    --brand:#000e35;--blue:#000e35;--accent:#660000;--gold:#660000;--maxw:1080px;
     --serif:"Montserrat","Arial Black",Arial,sans-serif;
     --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
@@ -83,7 +83,7 @@
   .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
     padding:1.1rem 2rem;border-radius:2px;border:1px solid transparent;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
   .btn-primary{background:var(--accent);color:#fff}
-  .btn-primary:hover{background:#860b18}
+  .btn-primary:hover{background:#4a0000}
   .btn-ghost{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 35%,transparent)}
   .btn-ghost:hover{background:var(--ink);color:var(--bg)}
   header{background:#f7f5ee;color:var(--ink);border-bottom:1px solid var(--line)}
@@ -119,14 +119,15 @@
   .why{padding:0;margin:0}
   .why li:last-child{border-bottom:1px solid var(--line)}
   .why b{color:var(--ink)}
-  .cta{background:#0043ff;color:#f7f5ee}
+  .cta{background:#000e35;color:#f7f5ee}
   .cta h2{color:#f7f5ee}
   .cta .eyebrow{color:#f7f5ee}
   .cta h2 em{color:#f7f5ee}
   .cta p{color:rgba(247,245,238,.9);max-width:60ch}
   .cta p a{color:#fff}
+  .cta .btn-primary{border-color:rgba(247,245,238,.55)}
   .cta .btn-ghost{color:#f7f5ee;border-color:rgba(247,245,238,.55)}
-  .cta .btn-ghost:hover{background:#f7f5ee;color:#0043ff}
+  .cta .btn-ghost:hover{background:#f7f5ee;color:#000e35}
   .sources{font-size:.82rem;color:var(--ink-soft)}
   .sources ul{padding-left:1.1rem;margin:.6rem 0 0}
   .sources li{margin:.3rem 0}
