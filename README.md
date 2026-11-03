@@ -7,7 +7,7 @@ Aucun build. Hébergement statique : Vercel ou Netlify.
 - `index.html` — le site
 - `amine.jpg` — portrait d'El Amine (section À propos, 461×564)
 - `amine-banner.jpg` — bannière lifestyle (utilisée en og:image de partage, 2000×1000)
-- `remax-alliance.svg` — logo RE/MAX Alliance (footer)
+- `remax-alliance-logo.png` — logo officiel RE/MAX Alliance (header + footer, texte crème sur fond transparent)
 - `robots.txt`, `sitemap.xml`, `llms.txt` — SEO / IA (remplacer le domaine si ≠ elamineghalem.com)
 
 ## À faire avant mise en ligne
